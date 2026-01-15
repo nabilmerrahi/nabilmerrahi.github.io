@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nav = document.getElementById("navbar");
     const toggle = document.querySelector(".nav-toggle");
     const navMenu = document.querySelector(".nav-links");
+    const blockEvent = event => event.preventDefault();
 
     // Smooth scroll for nav links
     navLinks.forEach(link => {
@@ -138,4 +139,30 @@ document.addEventListener("DOMContentLoaded", () => {
             window.addEventListener("resize", rebuild);
         }
     }
+
+    // Light friction against saving/downloading asset images
+    const installAssetGuards = () => {
+        const assetImages = document.querySelectorAll('img[src^="assets/"]');
+        assetImages.forEach(img => {
+            img.setAttribute("draggable", "false");
+            img.addEventListener("contextmenu", blockEvent);
+            img.addEventListener("dragstart", blockEvent);
+
+            const parent = img.parentElement;
+            if (!parent) return;
+            parent.classList.add("asset-guard");
+
+            const hasOverlay = parent.querySelector(".asset-guard-overlay");
+            if (hasOverlay) return;
+
+            const overlay = document.createElement("span");
+            overlay.className = "asset-guard-overlay";
+            overlay.setAttribute("aria-hidden", "true");
+            overlay.addEventListener("contextmenu", blockEvent);
+            overlay.addEventListener("dragstart", blockEvent);
+            parent.appendChild(overlay);
+        });
+    };
+
+    installAssetGuards();
 });
