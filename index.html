@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,16 +11,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <header class="navbar" id="navbar">
+    <header class="navbar" id="navbar">
         <a class="nav-logo" href="#presentation" aria-label="Go to main section">
             <img src="assets/logo-banner.png" alt="Brand logo" class="logo-banner">
         </a>
         <nav class="nav-links" aria-label="Main navigation">
-            <a href="#presentation" class="nav-link active">Présentation</a>
-            <a href="#about" class="nav-link">À propos</a>
-            <a href="#collabs" class="nav-link">Collabs</a>
-            <a href="#work" class="nav-link">Projets</a>
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#presentation" class="nav-link active" data-i18n="nav.presentation">Pr&eacute;sentation</a>
+            <a href="#about" class="nav-link" data-i18n="nav.about">&Agrave; propos</a>
+            <a href="#collabs" class="nav-link" data-i18n="nav.collabs">Collaborations</a>
+            <a href="#work" class="nav-link" data-i18n="nav.work">Projets</a>
+            <a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a>
+            <button class="lang-switch" type="button" aria-pressed="false" aria-label="Basculer en anglais">
+                <span class="lang-chip lang-chip-fr">FR</span>
+                <span class="lang-divider">/</span>
+                <span class="lang-chip lang-chip-en">EN</span>
+            </button>
         </nav>
         <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -30,14 +35,13 @@
     <main>
         <section id="presentation" class="section hero">
             <div class="hero-content reveal">
-                <h1>Nabil EL MERRAHI</h1>
-                <h2>Marketing et Communication 360°</h2>
-                <p class="tagline">Je conçois et pilote des stratégies marketing data-driven, en B2B comme en B2C, combinant marketing direct et marketing digital. De la stratégie à l'exécution, je transforme les insights en leviers de croissance mesurables et durables.</p>
+                <h1 data-i18n="hero.name">Nabil EL MERRAHI</h1>
+                <h2 data-i18n="hero.title">Marketing et communication 360&deg;</h2>
+                <p class="tagline" data-i18n="hero.tagline">Je con&ccedil;ois et pilote des strat&eacute;gies marketing data-driven, en B2B comme en B2C, combinant marketing direct et digital. De la strat&eacute;gie &agrave; l&apos;ex&eacute;cution, je transforme les insights en leviers de croissance mesurables et durables.</p>
                 <div class="hero-ctas">
-                    <a href="#contact" class="btn primary">Prenons contact!</a>
-                    <a href="https://drive.google.com/file/d/1Wxsp3Jhp7qzaSiNa2BETD7Dn7WfuxFfW/view" class="btn ghost" target="_blank" rel="noopener">Consulter mon portfolio</a>
+                    <a href="#contact" class="btn primary" data-i18n="hero.cta.primary">Prenons contact&nbsp;!</a>
+                    <a href="https://drive.google.com/file/d/1Wxsp3Jhp7qzaSiNa2BETD7Dn7WfuxFfW/view" class="btn ghost" target="_blank" rel="noopener" data-i18n="hero.cta.portfolio">Consulter mon portfolio</a>
                 </div>
-
             </div>
             <div class="hero-visual reveal">
                 <div class="portrait-stack">
@@ -58,35 +62,34 @@
 
         <section id="about" class="section biography">
             <div class="section-header reveal">
-                <p class="eyebrow">À propos</p>
-                <h3>Derrière le Marketeur</h3>
+                <p class="eyebrow" data-i18n="about.eyebrow">&Agrave; propos</p>
+                <h3 data-i18n="about.heading">Derri&egrave;re le Marketeur</h3>
             </div>
             <div class="bio-grid">
                 <div class="bio-text reveal">
-                    <p>Derrière les stratégies et les chiffres, il y a un humain, à l'esprit créatif, animé par l'exigence et la performance. Formé au marketing, avec un parcours construit entre la France et le Maroc, j'ai développé une vision à la fois stratégique et profondément ancrée dans la réalité du terrain, notamment dans des environnements internationaux.</p>
-                    <p>Personnellement, je crois que le marketing n'a de valeur que s'il est à l'écoute du marché, connecté aux équipes terrain et résolument orienté résultats.</p>
+                    <p data-i18n="about.body1">Derri&egrave;re les strat&eacute;gies et les chiffres, il y a un humain, &agrave; l&apos;esprit cr&eacute;atif, anim&eacute; par l&apos;exigence et la performance. Form&eacute; au marketing, entre la France et le Maroc, j&apos;ai d&eacute;velopp&eacute; une vision &agrave; la fois strat&eacute;gique et profond&eacute;ment ancr&eacute;e dans la r&eacute;alit&eacute; du terrain, notamment dans des environnements internationaux.</p>
+                    <p data-i18n="about.body2">Personnellement, je crois que le marketing n&apos;a de valeur que s&apos;il est &agrave; l&apos;&eacute;coute du march&eacute;, connect&eacute; aux &eacute;quipes terrain et r&eacute;solument orient&eacute; r&eacute;sultats.</p>
                 </div>
                 <div class="bio-timeline reveal">
                     <div class="timeline-item">
                         <span class="year">2025</span>
                         <div>
-                            <h5>IAE Lyon - France</h5>
-                            <p>Master 2 en Marketing et Vente B2B </p>
+                            <h5 data-i18n="timeline.2025.title">IAE Lyon - France</h5>
+                            <p data-i18n="timeline.2025.body">Master 2 en Marketing et Vente B2B.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <span class="year">2024</span>
                         <div>
-                            <h5>ENCG Fès - Maroc</h5>
-                            <p>Diplôme des Écoles Nationales de Commerce et de Gestion,<br>
-option Marketing et Action Commerciale</p>
+                            <h5 data-i18n="timeline.2024.title">ENCG F&egrave;s - Maroc</h5>
+                            <p data-i18n="timeline.2024.body" data-i18n-html="true">Dipl&ocirc;me des &Eacute;coles Nationales de Commerce et de Gestion,<br>option Marketing et Action Commerciale</p>
                         </div>
                     </div>
                     <div class="timeline-item">
                         <span class="year">2023</span>
                         <div>
-                            <h5><a href="https://www.credly.com/badges/7fcfe255-87ca-47e6-9009-7b0c2cc792ff" target="_blank" rel="noopener">Certifié Google</a></h5>
-                            <p>Manager de projet professionnel</p>
+                            <h5><a href="https://www.credly.com/badges/7fcfe255-87ca-47e6-9009-7b0c2cc792ff" target="_blank" rel="noopener" data-i18n="timeline.2023.title">Certifi&eacute; Google</a></h5>
+                            <p data-i18n="timeline.2023.body">Manager de projet professionnel</p>
                         </div>
                     </div>
                 </div>
@@ -95,8 +98,8 @@ option Marketing et Action Commerciale</p>
 
         <section id="collabs" class="section collabs reveal">
             <div class="section-header">
-                <p class="eyebrow">Collaborations & références</p>
-                <h3>Marques et équipes engagées dans la performance:</h3>
+                <p class="eyebrow" data-i18n="collabs.eyebrow">Collaborations &amp; r&eacute;f&eacute;rences</p>
+                <h3 data-i18n="collabs.heading">Marques et &eacute;quipes engag&eacute;es dans la performance&nbsp;:</h3>
             </div>
             <div class="logo-marquee" aria-label="Trusted by brands marquee">
                 <div class="marquee-track">
@@ -128,8 +131,8 @@ option Marketing et Action Commerciale</p>
 
         <section id="work" class="section work">
             <div class="section-header reveal">
-                <p class="eyebrow">Projets</p>
-                <h3>Campagnes et projets où stratégie, créativité et ROI se rencontrent.</h3>
+                <p class="eyebrow" data-i18n="work.eyebrow">Projets</p>
+                <h3 data-i18n="work.heading">Campagnes et projets o&ugrave; strat&eacute;gie, cr&eacute;ativit&eacute; et ROI se rencontrent.</h3>
             </div>
             <div class="work-carousel reveal">
                 <button class="work-arrow prev" data-dir="prev" aria-label="Previous work example">
@@ -140,74 +143,74 @@ option Marketing et Action Commerciale</p>
                 <div class="work-track">
                     <article class="card">
                         <div class="card-top">
-                            <h4>Chef de projet Marketing B2B</h4>
-                            <p class="subtitle">Renault Trucks - Group VOLVO</p>
+                            <h4 data-i18n="work.card1.title">Chef de projet marketing B2B</h4>
+                            <p class="subtitle" data-i18n="work.card1.subtitle">Renault Trucks - Group VOLVO</p>
                         </div>
-                        <p>Optimisation de la performance et de la satisfaction client du réseau à travers le pilotage de la « Dealer Survey » menée dans 70 pays auprès de 1 500 contacts.</p>
+                        <p data-i18n="work.card1.body">Optimisation de la performance et de la satisfaction client du r&eacute;seau &agrave; travers le pilotage de la &laquo;&nbsp;Dealer Survey&nbsp;&raquo; men&eacute;e dans 70 pays aupr&egrave;s de 1&nbsp;500 contacts.</p>
                         <ul class="results">
-                            <li>+40 % de taux de réponse (/2023)</li>
-                            <li>+10 points du NPS</li>
-                            <li>Amélioration sur 5/6 des thèmes stratégiques de satisfaction</li>
+                            <li data-i18n="work.card1.result1">+40&nbsp;% de taux de r&eacute;ponse (vs 2023)</li>
+                            <li data-i18n="work.card1.result2">+10 points de NPS</li>
+                            <li data-i18n="work.card1.result3">Am&eacute;lioration sur 5/6 des th&egrave;mes strat&eacute;giques de satisfaction</li>
                         </ul>
                     </article>
                     <article class="card">
                         <div class="card-top">
-                            <h4>Coordinateur Marketing et commercial</h4>
-                            <p class="subtitle">Devalt Sphere ESN</p>
+                            <h4 data-i18n="work.card2.title">Coordinateur marketing et commercial</h4>
+                            <p class="subtitle" data-i18n="work.card2.subtitle">Devalt Sphere ESN</p>
                         </div>
-                        <p>Développement d'une stratégie de marketing globale pour le lancement d'ALGOMED, service SaaS de gestion médicale:</p>
+                        <p data-i18n="work.card2.body">D&eacute;veloppement d&apos;une strat&eacute;gie marketing globale pour le lancement d&apos;ALGOMED, service SaaS de gestion m&eacute;dicale&nbsp;:</p>
                         <ul class="results">
-                            <li>+38 % de conversion prospects/clients</li>
-                            <li>+85 % d'engagement sur les réseaux sociaux</li>
-                            <li>73 % des objectifs Marketing atteints</li>
+                            <li data-i18n="work.card2.result1">+38&nbsp;% de conversion prospects/clients</li>
+                            <li data-i18n="work.card2.result2">+85&nbsp;% d&apos;engagement sur les r&eacute;seaux sociaux</li>
+                            <li data-i18n="work.card2.result3">73&nbsp;% des objectifs marketing atteints</li>
                         </ul>
                     </article>
                     <article class="card">
                         <div class="card-top">
-                            <h4>Marketeur digital</h4>
-                            <p class="subtitle">WeBoost Group - Agence Digital</p>
+                            <h4 data-i18n="work.card3.title">Marketeur digital</h4>
+                            <p class="subtitle" data-i18n="work.card3.subtitle">WeBoost Group - Agence digitale</p>
                         </div>
-                        <p>Élaboration et pilotage de campagnes publicitaires payantes (Meta Ads, Google Ads, SM) et de stratégies digitales pour plus de 15 clients.</p>
+                        <p data-i18n="work.card3.body">&Eacute;laboration et pilotage de campagnes publicitaires payantes (Meta Ads, Google Ads, SM) et de strat&eacute;gies digitales pour plus de 15 clients.</p>
                         <ul class="results">
-                            <li>Optimisation de l'e-réputation de WeBoost et de ses clients via Google My Business.</li>
-                            <li>Suivi des KPIs clés (ROAS, CPA, AOV...)</li>
-                            <li>Pilotage de la performance marketing orienté ROI et rentabilité.</li>
+                            <li data-i18n="work.card3.result1">Optimisation de l&apos;e-r&eacute;putation de WeBoost et de ses clients via Google My Business.</li>
+                            <li data-i18n="work.card3.result2">Suivi des KPIs cl&eacute;s (ROAS, CPA, AOV...)</li>
+                            <li data-i18n="work.card3.result3">Pilotage de la performance marketing orient&eacute; ROI et rentabilit&eacute;.</li>
                         </ul>
                     </article>
                     <article class="card">
                         <div class="card-top">
-                            <h4>Gestionnaire de boutique E-commerce</h4>
-                            <p class="subtitle">Merch by Amazon - Print-on-Demand</p>
+                            <h4 data-i18n="work.card4.title">Gestionnaire de boutique e-commerce</h4>
+                            <p class="subtitle" data-i18n="work.card4.subtitle">Merch by Amazon - Print-on-Demand</p>
                         </div>
-                        <p>De l'étude de marché à l'activation marketing, avec un focus sur la création produit, l'optimisation SEO et la performance des campagnes publicitaires.</p>
+                        <p data-i18n="work.card4.body">De l&apos;&eacute;tude de march&eacute; &agrave; l&apos;activation marketing, avec un focus sur la cr&eacute;ation produit, l&apos;optimisation SEO et la performance des campagnes publicitaires.</p>
                         <ul class="results">
-                            <li>+1 200 unités vendues sur les marchés européen et nord-américain</li>
-                            <li>Budget publicitaire piloté : ~2 500 €</li>
-                            <li>ROAS moyen estimé à 3,2</li>
+                            <li data-i18n="work.card4.result1">+1&nbsp;200 unit&eacute;s vendues sur les march&eacute;s europ&eacute;en et nord-am&eacute;ricain</li>
+                            <li data-i18n="work.card4.result2">Budget publicitaire pilot&eacute;&nbsp;: ~2&nbsp;500&nbsp;&euro;</li>
+                            <li data-i18n="work.card4.result3">ROAS moyen estim&eacute; &agrave; 3,2</li>
                         </ul>
                     </article>
                     <article class="card">
                         <div class="card-top">
-                            <h4>Expert IA - Analytique, Générative</h4>
-                            <p class="subtitle">Outlier AI</p>
+                            <h4 data-i18n="work.card5.title">Expert IA - Analytique, G&eacute;n&eacute;rative</h4>
+                            <p class="subtitle" data-i18n="work.card5.subtitle">Outlier AI</p>
                         </div>
-                        <p>Évaluation et amélioration de modèles d'intelligence artificielle, incluant des modèles analytiques, génératifs et des LLM, dans des contextes multilingues.</p>
+                        <p data-i18n="work.card5.body">&Eacute;valuation et am&eacute;lioration de mod&egrave;les d&apos;intelligence artificielle, incluant des mod&egrave;les analytiques, g&eacute;n&eacute;ratifs et des LLM, dans des contextes multilingues.</p>
                         <ul class="results">
-                            <li>6 projets IA et LLM (FR / EN)</li>
-                            <li>Évaluation, amélioration et tutorat des modèles</li>
-                            <li>Analyse NLP, texte et image</li>
+                            <li data-i18n="work.card5.result1">6 projets IA et LLM (FR / EN)</li>
+                            <li data-i18n="work.card5.result2">&Eacute;valuation, am&eacute;lioration et tutorat des mod&egrave;les</li>
+                            <li data-i18n="work.card5.result3">Analyse NLP, texte et image</li>
                         </ul>
                     </article>
                     <article class="card">
                         <div class="card-top">
-                            <h4>Manager de site Web & Copywriter</h4>
-                            <p class="subtitle">Episteme Passion</p>
+                            <h4 data-i18n="work.card6.title">Manager de site web &amp; Copywriter</h4>
+                            <p class="subtitle" data-i18n="work.card6.subtitle">Episteme Passion</p>
                         </div>
-                        <p>Gestion d'un blog informatif, avec une approche orientée contenu, SEO et monétisation.</p>
+                        <p data-i18n="work.card6.body">Gestion d&apos;un blog informatif, avec une approche orient&eacute;e contenu, SEO et mon&eacute;tisation.</p>
                         <ul class="results">
-                            <li>+100 contenus éditoriaux rédigés et optimisés SEO</li>
-                            <li>Monétisation AdSense organique atteinte en 3 mois</li>
-                            <li>+1 700 lecteurs actifs mensuels</li>
+                            <li data-i18n="work.card6.result1">+100 contenus &eacute;ditoriaux r&eacute;dig&eacute;s et optimis&eacute;s SEO</li>
+                            <li data-i18n="work.card6.result2">Mon&eacute;tisation AdSense organique atteinte en 3 mois</li>
+                            <li data-i18n="work.card6.result3">+1&nbsp;700 lecteurs actifs mensuels</li>
                         </ul>
                     </article>
                 </div>
@@ -221,53 +224,53 @@ option Marketing et Action Commerciale</p>
 
         <section class="section expertise">
             <div class="section-header reveal">
-                <p class="eyebrow">Expertises</p>
-                <h3>Stratégie, performance et storytelling au service d'une croissance durable.</h3>
+                <p class="eyebrow" data-i18n="expertise.eyebrow">Expertises</p>
+                <h3 data-i18n="expertise.heading">Strat&eacute;gie, performance et storytelling au service d&apos;une croissance durable.</h3>
             </div>
             <div class="expertise-grid">    
                 <div class="card reveal">
-                    <h4>Stratégie Marketing & Positionnement</h4>
-                    <p>Structuration de stratégies marketing B2B et B2C alignées sur les enjeux business, intégrant études de marché et veille concurrentielle.</p>
+                    <h4 data-i18n="expertise.item1.title">Strat&eacute;gie marketing &amp; positionnement</h4>
+                    <p data-i18n="expertise.item1.body">Structuration de strat&eacute;gies marketing B2B et B2C align&eacute;es sur les enjeux business, int&eacute;grant &eacute;tudes de march&eacute; et veille concurrentielle.</p>
                 </div>
                 <div class="card reveal">
-                    <h4>Branding & présence digitale</h4>
-                    <p>Développement de l'image de marque à travers la gestion des réseaux sociaux, la création de contenus audiovisuels et le community management.</p>
+                    <h4 data-i18n="expertise.item2.title">Branding &amp; pr&eacute;sence digitale</h4>
+                    <p data-i18n="expertise.item2.body">D&eacute;veloppement de l&apos;image de marque &agrave; travers la gestion des r&eacute;seaux sociaux, la cr&eacute;ation de contenus audiovisuels et le community management.</p>
                 </div>
                 <div class="card reveal">
-                    <h4>Marketing digital & Activation</h4>
-                    <p>Pilotage de dispositifs digitaux (paid, owned, earned), structuration de plans d'activation multicanaux et optimisation des parcours clients.</p>
+                    <h4 data-i18n="expertise.item3.title">Marketing digital &amp; activation</h4>
+                    <p data-i18n="expertise.item3.body">Pilotage de dispositifs digitaux (paid, owned, earned), structuration de plans d&apos;activation multicanaux et optimisation des parcours clients.</p>
                 </div>
                 <div class="card reveal">
-                    <h4>Pilotage de la performance & Data marketing</h4>
-                    <p>Analyse de la performance marketing et commerciale via des KPIs tableaux de bord et recommandations actionnables.</p>
+                    <h4 data-i18n="expertise.item4.title">Pilotage de la performance &amp; data marketing</h4>
+                    <p data-i18n="expertise.item4.body">Analyse de la performance marketing et commerciale via des KPIs, tableaux de bord et recommandations actionnables.</p>
                 </div>
                 <div class="card reveal">
-                    <h4>Gestion de projets & coordination d'équipes</h4>
-                    <p>Pilotage de projets marketing et coordination d'équipes transverses.</p>
+                    <h4 data-i18n="expertise.item5.title">Gestion de projets &amp; coordination d&apos;&eacute;quipes</h4>
+                    <p data-i18n="expertise.item5.body">Pilotage de projets marketing et coordination d&apos;&eacute;quipes transverses.</p>
                 </div>
                 <div class="card reveal">
-                    <h4>CRM, expérience & fidélisation</h4>
-                    <p>Optimisation de la relation client et partenaire pour une croissance durable.</p>
+                    <h4 data-i18n="expertise.item6.title">CRM, exp&eacute;rience &amp; fid&eacute;lisation</h4>
+                    <p data-i18n="expertise.item6.body">Optimisation de la relation client et partenaire pour une croissance durable.</p>
                 </div>
             </div>
         </section>
 <section class="section testimonials">
             <div class="section-header reveal">
-                <p class="eyebrow">Témoignages</p>
-                <h3>Pragmatique, stratégique et collaboratif.</h3>
+                <p class="eyebrow" data-i18n="testimonials.eyebrow">T&eacute;moignages</p>
+                <h3 data-i18n="testimonials.heading">Pragmatique, strat&eacute;gique et collaboratif.</h3>
             </div>
             <div class="testimonial-grid">
                 <div class="card reveal">
-                    <p class="quote">"Nabil allie dynamisme et clarté opérationnelle. Grâce à son implication, notre projet a dépassé nos attentes."</p>
-                    <p class="person">Valérie Lyonnet - Dir. Expérience client, Renault Trucks</p>
+                    <p class="quote" data-i18n="testimonials.quote1">&quot;Nabil allie dynamisme et clart&eacute; op&eacute;rationnelle. Gr&acirc;ce &agrave; son implication, notre projet a d&eacute;pass&eacute; nos attentes.&quot;</p>
+                    <p class="person" data-i18n="testimonials.person1">Val&eacute;rie Lyonnet - Dir. Exp&eacute;rience client, Renault Trucks</p>
                 </div>
                 <div class="card reveal">
-                    <p class="quote">"Un profil à fort potentiel, capable d'apporter de la valeur partout où l'exigence et l'engagement comptent."</p>
-                    <p class="person">Youssef EL HASSANI - PhD en Marketing, ENCGF-USMBA</p>
+                    <p class="quote" data-i18n="testimonials.quote2">&quot;Un profil &agrave; fort potentiel, capable d&apos;apporter de la valeur partout o&ugrave; l&apos;exigence et l&apos;engagement comptent.&quot;</p>
+                    <p class="person" data-i18n="testimonials.person2">Youssef EL HASSANI - PhD en Marketing, ENCGF-USMBA</p>
                 </div>
                 <div class="card reveal">
-                    <p class="quote">"Data-led and empathetic with the team, Nabil optimized our management and SaaS sales, improving both results and morale."</p>
-                    <p class="person">Lahcen D. - CEO, Quanta Edge</p>
+                    <p class="quote" data-i18n="testimonials.quote3">&quot;Data-led and empathetic with the team, Nabil optimized our management and SaaS sales, improving both results and morale.&quot;</p>
+                    <p class="person" data-i18n="testimonials.person3">Lahcen D. - CEO, Quanta Edge</p>
                 </div>
             </div>
         </section>
@@ -275,10 +278,9 @@ option Marketing et Action Commerciale</p>
         <section id="contact" class="section contact reveal">
             <div class="contact-inner">
                 <div>
-                    <p class="eyebrow">Contact</p>
-                    <h3>Envie d'échanger ?</h3>
-                    <p class="contact-copy">Parlez-moi de vos objectifs et je vous expliquerai comment nous pouvons élaborer un plan performant.
-Remplissez le formulaire ou envoyez-moi un email directement.</p>
+                    <p class="eyebrow" data-i18n="contact.eyebrow">Contact</p>
+                    <h3 data-i18n="contact.heading">Envie d&apos;&eacute;changer&nbsp;?</h3>
+                    <p class="contact-copy" data-i18n="contact.copy">Parlez-moi de vos objectifs et je vous expliquerai comment nous pouvons &eacute;laborer un plan performant. Remplissez le formulaire ou envoyez-moi un email directement.</p>
                     <div class="contact-links">
                         <a href="mailto:nabil.elmerrahi@gmail.com">nabil.elmerrahi@gmail.com</a>
                     </div>
@@ -292,7 +294,7 @@ Remplissez le formulaire ou envoyez-moi un email directement.</p>
                         marginheight="0"
                         marginwidth="0"
                         loading="lazy">
-                        Loading…
+                        Loading.
                     </iframe>
                 </div>
             </div>
@@ -301,12 +303,12 @@ Remplissez le formulaire ou envoyez-moi un email directement.</p>
 
     <footer class="footer">
         <div class="footer-left">
-            <p>Nabil EL MERRAHI</p>
-            <p>Marketing & Communication 360°</p>
+            <p data-i18n="footer.name">Nabil EL MERRAHI</p>
+            <p data-i18n="footer.title">Marketing &amp; communication 360&deg;</p>
         </div>
         <div class="footer-center">
             <div class="footer-social">
-                <span class="footer-social-label">Trouvez-moi sur</span>
+                <span class="footer-social-label" data-i18n="footer.social">Trouvez-moi sur</span>
                 <div class="footer-social-icons">
                     <a href="https://www.linkedin.com/in/merrahi-nabil" class="footer-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
@@ -338,7 +340,7 @@ Remplissez le formulaire ou envoyez-moi un email directement.</p>
         </div>
         <div class="footer-right">
             <div class="logo-text">
-                <span class="logo-role">© 2026 - Tous droits réservés.</span>
+                <span class="logo-role" data-i18n="footer.rights">&copy; 2026 - Tous droits r&eacute;serv&eacute;s.</span>
             </div>
         </div>
     </footer>
@@ -346,4 +348,3 @@ Remplissez le formulaire ou envoyez-moi un email directement.</p>
     <script src="script.js"></script>
 </body>
 </html>
-
