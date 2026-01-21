@@ -192,6 +192,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const langSwitches = document.querySelectorAll(".lang-switch");
     const blockEvent = event => event.preventDefault();
     let currentLang = "en";
+    const autoCacheKey = "i18nAutoCache";
+    const autoCache = (() => {
+        try {
+            return JSON.parse(localStorage.getItem(autoCacheKey) || "{}");
+        } catch {
+            return {};
+        }
+    })();
+    const pendingTranslations = {};
 
     const getDefaultLanguage = () => {
         const stored = localStorage.getItem("preferredLang");
@@ -199,6 +208,56 @@ document.addEventListener("DOMContentLoaded", () => {
         return "fr";
     };
     currentLang = getDefaultLanguage();
+
+    const persistAutoCache = () => {
+        try {
+            localStorage.setItem(autoCacheKey, JSON.stringify(autoCache));
+        } catch {
+            /* noop */
+        }
+    };
+
+    const translateToEnglish = key => {
+        if (translations.en[key]) return Promise.resolve(translations.en[key]);
+        if (autoCache[key]) {
+            translations.en[key] = autoCache[key];
+            return Promise.resolve(autoCache[key]);
+        }
+        if (pendingTranslations[key]) return pendingTranslations[key];
+
+        const source = translations.fr[key];
+        if (!source) return Promise.resolve(null);
+
+        const payload = {
+            q: source,
+            source: "fr",
+            target: "en",
+            format: source.includes("<br") ? "html" : "text"
+        };
+
+        const promise = fetch("https://libretranslate.de/translate", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        })
+            .then(res => (res.ok ? res.json() : null))
+            .then(data => {
+                if (data && data.translatedText) {
+                    translations.en[key] = data.translatedText;
+                    autoCache[key] = data.translatedText;
+                    persistAutoCache();
+                    return data.translatedText;
+                }
+                return null;
+            })
+            .catch(() => null)
+            .finally(() => {
+                delete pendingTranslations[key];
+            });
+
+        pendingTranslations[key] = promise;
+        return promise;
+    };
 
     const updateLangSwitch = lang => {
         const isEn = lang === "en";
@@ -217,7 +276,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const key = node.dataset.i18n;
             if (!key) return;
             const value = map[key];
-            if (value === undefined) return;
+            if (value === undefined) {
+                if (lang === "en") {
+                    const fallback = translations.fr[key];
+                    if (fallback) {
+                        if (node.dataset.i18nHtml === "true") node.innerHTML = fallback;
+                        else node.textContent = fallback;
+                        translateToEnglish(key).then(translated => {
+                            if (!translated) return;
+                            if (document.documentElement.getAttribute("lang") !== "en") return;
+                            if (node.dataset.i18nHtml === "true") node.innerHTML = translated;
+                            else node.textContent = translated;
+                        });
+                    }
+                }
+                return;
+            }
             if (node.dataset.i18nHtml === "true") {
                 node.innerHTML = value;
             } else {
