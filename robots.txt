@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.nabilmerrahi.com/sitemap.xml
+Host: www.nabilmerrahi.com

@@ -9,7 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "nav.contact": "Contact",
             "hero.name": "Nabil EL MERRAHI",
             "hero.title": "Marketing et communication 360\u00b0",
-            "hero.tagline": "Je con\u00e7ois et pilote des strat\u00e9gies marketing data-driven, en B2B comme en B2C, combinant marketing direct et digital. De la strat\u00e9gie \u00e0 l'ex\u00e9cution, je transforme les insights en leviers de croissance mesurables et durables.",
+            "hero.availability": "\u00c0 la recherche active d'un CDI en marketing, Digital ou Exp\u00e9rience Client.",
+            "hero.tagline": "Je con\u00e7ois et pilote des strat\u00e9gies marketing data-driven, en B2B comme en B2C, combinant marketing direct et digital.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>De la strat\u00e9gie \u00e0 l'ex\u00e9cution, je transforme les insights en leviers de croissance mesurables et durables.",
             "hero.cta.primary": "Prenons contact !",
             "hero.cta.portfolio": "Consulter mon portfolio",
             "about.eyebrow": "\u00c0 propos",
@@ -86,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "testimonials.person3": "Lahcen D. - CEO, Quanta Edge",
             "contact.eyebrow": "Contact",
             "contact.heading": "Envie d'\u00e9changer ?",
-            "contact.copy": "Parlez-moi de vos objectifs et je vous expliquerai comment nous pouvons \u00e9laborer un plan performant. Remplissez le formulaire ou envoyez-moi un email directement.",
+            "contact.copy": "Si vous souhaitez consulter mon CV, \u00e9changer ou discuter d'une opportunit\u00e9 correspondant \u00e0 mon profil, je serais ravi d'\u00e9changer avec vous.<br>Vous pouvez remplir le formulaire suivant ou me contacter directement par email:",
             "footer.name": "Nabil EL MERRAHI",
             "footer.title": "Marketing & communication 360\u00b0",
             "footer.social": "Trouvez-moi sur",
@@ -100,7 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "nav.contact": "Contact",
             "hero.name": "Nabil EL MERRAHI",
             "hero.title": "Marketing and 360 Communication",
-            "hero.tagline": "I design and lead data-driven marketing strategies, in B2B and B2C, blending direct and digital marketing. From strategy to execution, I turn insights into measurable, durable growth levers.",
+            "hero.availability": "Actively seeking a permanent role (CDI) in Marketing, Digital, or Customer Experience.",
+            "hero.tagline": "I design and lead data-driven marketing strategies, in B2B and B2C, blending direct and digital marketing.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>From strategy to execution, I turn insights into measurable, durable growth levers.",
             "hero.cta.primary": "Let's connect!",
             "hero.cta.portfolio": "View my portfolio",
             "about.eyebrow": "About",
@@ -177,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "testimonials.person3": "Lahcen D. - CEO, Quanta Edge",
             "contact.eyebrow": "Contact",
             "contact.heading": "Ready to talk?",
-            "contact.copy": "Tell me about your goals and I'll map how we can build a high-performing plan. Fill out the form or email me directly.",
+            "contact.copy": "If you would like to review my CV, connect, or discuss an opportunity that matches my profile, I would be delighted to speak with you.<br>You can fill out the following form or contact me directly by email:",
             "footer.name": "Nabil EL MERRAHI",
             "footer.title": "Marketing & Communication 360\u00b0",
             "footer.social": "Find me on",
@@ -187,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const navLinks = document.querySelectorAll(".nav-link");
     const nav = document.getElementById("navbar");
+    const scrollProgressBar = document.querySelector(".scroll-progress__bar");
     const toggle = document.querySelector(".nav-toggle");
     const navMenu = document.querySelector(".nav-links");
     const langSwitches = document.querySelectorAll(".lang-switch");
@@ -268,6 +271,56 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
+    const heroAvailability = document.querySelector(".hero-availability");
+    const heroMainPortrait = document.querySelector(".hero .portrait-stack > .portrait-frame");
+    let heroBubbleRaf = 0;
+
+    const syncHeroBubbleAnchor = () => {
+        if (!heroAvailability || !heroMainPortrait) return;
+        if (window.matchMedia("(max-width: 900px)").matches) {
+            heroAvailability.style.setProperty("--bubble-shift-x", "0px");
+            return;
+        }
+
+        const bubbleRect = heroAvailability.getBoundingClientRect();
+        const portraitRect = heroMainPortrait.getBoundingClientRect();
+        if (!bubbleRect.width || !portraitRect.width) return;
+
+        // Rightmost tiny tail dot sits ~3px before bubble's right edge in current CSS artwork.
+        const tailDotRightEdge = bubbleRect.right - 3;
+        const targetEdge = portraitRect.left;
+        const currentShift = parseFloat(
+            getComputedStyle(heroAvailability).getPropertyValue("--bubble-shift-x")
+        ) || 0;
+        const delta = targetEdge - tailDotRightEdge;
+        const nextShift = Math.max(-40, Math.min(1200, currentShift + delta));
+        heroAvailability.style.setProperty("--bubble-shift-x", `${Math.round(nextShift)}px`);
+    };
+
+    const scheduleHeroBubbleAnchor = () => {
+        if (heroBubbleRaf) return;
+        heroBubbleRaf = requestAnimationFrame(() => {
+            heroBubbleRaf = 0;
+            syncHeroBubbleAnchor();
+        });
+    };
+
+    let progressRaf = 0;
+    const syncScrollProgress = () => {
+        if (!scrollProgressBar) return;
+        const doc = document.documentElement;
+        const scrollable = Math.max(1, doc.scrollHeight - window.innerHeight);
+        const progress = Math.max(0, Math.min(1, window.scrollY / scrollable));
+        scrollProgressBar.style.transform = `scaleX(${progress})`;
+    };
+    const scheduleScrollProgress = () => {
+        if (progressRaf) return;
+        progressRaf = requestAnimationFrame(() => {
+            progressRaf = 0;
+            syncScrollProgress();
+        });
+    };
+
     const applyTranslations = lang => {
         const map = translations[lang];
         if (!map) return;
@@ -287,6 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             if (document.documentElement.getAttribute("lang") !== "en") return;
                             if (node.dataset.i18nHtml === "true") node.innerHTML = translated;
                             else node.textContent = translated;
+                            scheduleHeroBubbleAnchor();
                         });
                     }
                 }
@@ -299,6 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
         updateLangSwitch(lang);
+        scheduleHeroBubbleAnchor();
     };
 
     const setLanguage = lang => {
@@ -355,14 +410,6 @@ document.addEventListener("DOMContentLoaded", () => {
         { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
     );
     sections.forEach(sec => observer.observe(sec));
-
-    // Navbar compress on scroll
-    if (nav) {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 30) nav.classList.add("scrolled");
-            else nav.classList.remove("scrolled");
-        });
-    }
 
     // Reveal on scroll
     const revealEls = document.querySelectorAll(".reveal");
@@ -483,6 +530,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     installAssetGuards();
+    window.addEventListener("resize", scheduleHeroBubbleAnchor);
+    window.addEventListener("resize", scheduleScrollProgress);
+    window.addEventListener("scroll", scheduleScrollProgress, { passive: true });
 
     applyTranslations(currentLang);
+    syncScrollProgress();
 });
