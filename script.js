@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "nav.work": "Projets",
             "nav.contact": "Contact",
             "hero.name": "Nabil EL MERRAHI",
-            "hero.title": "Marketing et communication 360\u00b0",
-            "hero.availability": "\u00c0 la recherche active d'un CDI en marketing, Digital ou Exp\u00e9rience Client.",
+            "hero.title": "Chef de projet Marketing & Exp\u00e9rience client",
+            "hero.availability": "\u00c0 la recherche d'un CDI en relation et exp\u00e9rience<br>client B2B, orient\u00e9 satisfaction et fid\u00e9lisation.",
             "hero.tagline": "Je con\u00e7ois et pilote des strat\u00e9gies marketing data-driven, en B2B comme en B2C, combinant marketing direct et digital.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>De la strat\u00e9gie \u00e0 l'ex\u00e9cution, je transforme les insights en leviers de croissance mesurables et durables.",
             "hero.cta.primary": "Prenons contact !",
             "hero.cta.portfolio": "Consulter mon portfolio",
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "contact.heading": "Envie d'\u00e9changer ?",
             "contact.copy": "Si vous souhaitez consulter mon CV, \u00e9changer ou discuter d'une opportunit\u00e9 correspondant \u00e0 mon profil, je serais ravi d'\u00e9changer avec vous.<br>Vous pouvez remplir le formulaire suivant ou me contacter directement par email:",
             "footer.name": "Nabil EL MERRAHI",
-            "footer.title": "Marketing & communication 360\u00b0",
+            "footer.title": "Chef de projet Marketing & Exp\u00e9rience client",
             "footer.social": "Trouvez-moi sur",
             "footer.rights": "\u00a9 2026 - Tous droits r\u00e9serv\u00e9s."
         },
@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "nav.work": "Projects",
             "nav.contact": "Contact",
             "hero.name": "Nabil EL MERRAHI",
-            "hero.title": "Marketing and 360 Communication",
-            "hero.availability": "Actively seeking a permanent role (CDI) in Marketing, Digital, or Customer Experience.",
-            "hero.tagline": "I design and lead data-driven marketing strategies, in B2B and B2C, blending direct and digital marketing.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>From strategy to execution, I turn insights into measurable, durable growth levers.",
+            "hero.title": "Marketing Project Manager & Customer Experience",
+            "hero.availability": "Seeking a permanent role (CDI) in customer relations <span style=\"white-space: nowrap;\">and B2B customer experience,</span><br>focused on satisfaction and loyalty.",
+            "hero.tagline": "At the intersection of B2B marketing and customer experience, I analyze needs, field feedback, and data to improve customer journeys and satisfaction.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>I turn these insights into concrete actions that strengthen loyalty, performance, and the quality of the customer experience.",
             "hero.cta.primary": "Let's connect!",
             "hero.cta.portfolio": "View my portfolio",
             "about.eyebrow": "About",
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "contact.heading": "Ready to talk?",
             "contact.copy": "If you would like to review my CV, connect, or discuss an opportunity that matches my profile, I would be delighted to speak with you.<br>You can fill out the following form or contact me directly by email:",
             "footer.name": "Nabil EL MERRAHI",
-            "footer.title": "Marketing & Communication 360\u00b0",
+            "footer.title": "Marketing Project Manager & Customer Experience",
             "footer.social": "Find me on",
             "footer.rights": "\u00a9 2026 - All rights reserved."
         }
@@ -205,6 +205,21 @@ document.addEventListener("DOMContentLoaded", () => {
     })();
     const pendingTranslations = {};
 
+    const captureFrenchTranslationsFromDom = () => {
+        const captured = {};
+        document.querySelectorAll("[data-i18n]").forEach(node => {
+            const key = node.dataset.i18n;
+            if (!key) return;
+            captured[key] = node.dataset.i18nHtml === "true"
+                ? node.innerHTML.trim()
+                : node.textContent.trim();
+        });
+        return captured;
+    };
+
+    // The French HTML in index.html is the source of truth.
+    Object.assign(translations.fr, captureFrenchTranslationsFromDom());
+
     const getDefaultLanguage = () => {
         const stored = localStorage.getItem("preferredLang");
         if (stored && translations[stored]) return stored;
@@ -221,15 +236,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const translateToEnglish = key => {
-        if (translations.en[key]) return Promise.resolve(translations.en[key]);
-        if (autoCache[key]) {
-            translations.en[key] = autoCache[key];
-            return Promise.resolve(autoCache[key]);
-        }
-        if (pendingTranslations[key]) return pendingTranslations[key];
-
         const source = translations.fr[key];
         if (!source) return Promise.resolve(null);
+
+        const cached = autoCache[key];
+        if (cached && cached.source === source && cached.translated) {
+            translations.en[key] = cached.translated;
+            return Promise.resolve(cached.translated);
+        }
+        if (pendingTranslations[key]) return pendingTranslations[key];
 
         const payload = {
             q: source,
@@ -247,13 +262,17 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(data => {
                 if (data && data.translatedText) {
                     translations.en[key] = data.translatedText;
-                    autoCache[key] = data.translatedText;
+                    autoCache[key] = {
+                        source,
+                        translated: data.translatedText
+                    };
                     persistAutoCache();
                     return data.translatedText;
                 }
+                if (translations.en[key]) return translations.en[key];
                 return null;
             })
-            .catch(() => null)
+            .catch(() => translations.en[key] || null)
             .finally(() => {
                 delete pendingTranslations[key];
             });
@@ -328,29 +347,25 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll("[data-i18n]").forEach(node => {
             const key = node.dataset.i18n;
             if (!key) return;
-            const value = map[key];
-            if (value === undefined) {
-                if (lang === "en") {
-                    const fallback = translations.fr[key];
-                    if (fallback) {
-                        if (node.dataset.i18nHtml === "true") node.innerHTML = fallback;
-                        else node.textContent = fallback;
-                        translateToEnglish(key).then(translated => {
-                            if (!translated) return;
-                            if (document.documentElement.getAttribute("lang") !== "en") return;
-                            if (node.dataset.i18nHtml === "true") node.innerHTML = translated;
-                            else node.textContent = translated;
-                            scheduleHeroBubbleAnchor();
-                        });
-                    }
+            if (lang === "en") {
+                const fallback = translations.fr[key];
+                if (fallback) {
+                    if (node.dataset.i18nHtml === "true") node.innerHTML = fallback;
+                    else node.textContent = fallback;
+                    translateToEnglish(key).then(translated => {
+                        if (!translated) return;
+                        if (document.documentElement.getAttribute("lang") !== "en") return;
+                        if (node.dataset.i18nHtml === "true") node.innerHTML = translated;
+                        else node.textContent = translated;
+                        scheduleHeroBubbleAnchor();
+                    });
                 }
                 return;
             }
-            if (node.dataset.i18nHtml === "true") {
-                node.innerHTML = value;
-            } else {
-                node.textContent = value;
-            }
+            const value = map[key];
+            if (value === undefined) return;
+            if (node.dataset.i18nHtml === "true") node.innerHTML = value;
+            else node.textContent = value;
         });
         updateLangSwitch(lang);
         scheduleHeroBubbleAnchor();
