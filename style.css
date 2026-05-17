@@ -229,7 +229,7 @@ main {
 }
 .hero-content { display: flex; flex-direction: column; gap: 12px; justify-content: center; }
 .hero h1 { font-size: clamp(36px, 6vw, 56px); margin-bottom: 2px; }
-.hero h2 { font-family: var(--font-body); font-weight: 500; color: var(--muted); margin-top: 2px; margin-bottom: 8px; }
+.hero h2 { font-family: var(--font-body); font-weight: 500; font-size: 19px; color: var(--muted); margin-top: 2px; margin-bottom: 8px; }
 .hero-availability {
     --bubble-shift-x: 0px;
     align-self: flex-start;
@@ -294,8 +294,11 @@ main {
 @media (min-width: 901px) {
     html[lang="en"] .hero-availability {
         white-space: normal;
-        max-width: max-content;
-        margin-left: clamp(0px, 0.8vw, 10px);
+        max-width: min(100%, 32rem);
+        margin-left: 0;
+    }
+    html[lang="en"] .hero-availability::after {
+        display: none;
     }
 }
 

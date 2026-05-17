@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "nav.work": "Projets",
             "nav.contact": "Contact",
             "hero.name": "Nabil EL MERRAHI",
-            "hero.title": "Chef de projet Marketing & Exp\u00e9rience client",
-            "hero.availability": "\u00c0 la recherche d'un CDI en relation et exp\u00e9rience<br>client B2B, orient\u00e9 satisfaction et fid\u00e9lisation.",
-            "hero.tagline": "Je con\u00e7ois et pilote des strat\u00e9gies marketing data-driven, en B2B comme en B2C, combinant marketing direct et digital.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>De la strat\u00e9gie \u00e0 l'ex\u00e9cution, je transforme les insights en leviers de croissance mesurables et durables.",
+            "hero.title": "Chef de projet marketing | Performance, digital & Exp\u00e9rience client",
+            "hero.availability": "\u00c0 la recherche d'un CDI en marketing, performance et exp\u00e9rience client, en B2B/B2C.",
+            "hero.tagline": "\u00c0 l'interface du marketing, du digital et de l'exp\u00e9rience client, j'analyse les besoins, les donn\u00e9es et les retours terrain pour piloter des actions concr\u00e8tes, mesurables et orient\u00e9es r\u00e9sultats.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>Je transforme ces insights en leviers d'acquisition, de fid\u00e9lisation et d'am\u00e9lioration du customer journey, avec un suivi de la performance via KPIs, tableaux de bord et NPS.",
             "hero.cta.primary": "Prenons contact !",
             "hero.cta.portfolio": "Consulter mon portfolio",
             "about.eyebrow": "\u00c0 propos",
@@ -29,19 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "work.heading": "Campagnes et projets o\u00f9 strat\u00e9gie, cr\u00e9ativit\u00e9 et ROI se rencontrent.",
             "work.card1.title": "Chef de projet marketing B2B",
             "work.card1.subtitle": "Renault Trucks - Group VOLVO",
-            "work.card1.body": "Optimisation de la performance et de la satisfaction client du r\u00e9seau \u00e0 travers le pilotage de la \"Dealer Survey\" men\u00e9e dans 70 pays aupr\u00e8s de 1 500 contacts.",
+            "work.card1.body": "Optimisation de la performance et de l'exp\u00e9rience client du r\u00e9seau via le pilotage de la \"Dealer Survey\", l'analyse de performance, le suivi des KPIs et des tableaux de bord dans 70 pays aupr\u00e8s de 1 500 contacts.",
             "work.card1.result1": "+40 % de taux de r\u00e9ponse (vs 2023)",
             "work.card1.result2": "+10 points de NPS",
             "work.card1.result3": "Am\u00e9lioration sur 5/6 des th\u00e8mes strat\u00e9giques de satisfaction",
             "work.card2.title": "Coordinateur marketing et commercial",
-            "work.card2.subtitle": "Devalt Sphere ESN",
-            "work.card2.body": "D\u00e9veloppement d'une strat\u00e9gie marketing globale pour le lancement d'ALGOMED, service SaaS de gestion m\u00e9dicale :",
+            "work.card2.subtitle": "ATLECS - ESN AgriTech & Innovation",
+            "work.card2.body": "D\u00e9veloppement d'une strat\u00e9gie marketing globale pour le lancement d'ALGOMED, service SaaS de gestion m\u00e9dicale, avec gestion de projet, lead generation, marketing automation et pilotage du customer journey :",
             "work.card2.result1": "+38 % de conversion prospects/clients",
             "work.card2.result2": "+85 % d'engagement sur les r\u00e9seaux sociaux",
             "work.card2.result3": "73 % des objectifs marketing atteints",
             "work.card3.title": "Marketeur digital",
             "work.card3.subtitle": "WeBoost Group - Agence digitale",
-            "work.card3.body": "\u00c9laboration et pilotage de campagnes publicitaires payantes (Meta Ads, Google Ads, SM) et de strat\u00e9gies digitales pour plus de 15 clients.",
+            "work.card3.body": "\u00c9laboration et pilotage de campagnes publicitaires payantes (Meta Ads, Google Ads, SM), acquisition digitale et analyse de performance pour plus de 15 clients.",
             "work.card3.result1": "Optimisation de l'e-r\u00e9putation de WeBoost et de ses clients via Google My Business.",
             "work.card3.result2": "Suivi des KPIs cl\u00e9s (ROAS, CPA, AOV...)",
             "work.card3.result3": "Pilotage de la performance marketing orient\u00e9 ROI et rentabilit\u00e9.",
@@ -70,13 +70,13 @@ document.addEventListener("DOMContentLoaded", () => {
             "expertise.item2.title": "Branding & pr\u00e9sence digitale",
             "expertise.item2.body": "D\u00e9veloppement de l'image de marque \u00e0 travers la gestion des r\u00e9seaux sociaux, la cr\u00e9ation de contenus audiovisuels et le community management.",
             "expertise.item3.title": "Marketing digital & activation",
-            "expertise.item3.body": "Pilotage de dispositifs digitaux (paid, owned, earned), structuration de plans d'activation multicanaux et optimisation des parcours clients.",
+            "expertise.item3.body": "Pilotage de campagnes et de dispositifs digitaux (paid, owned, earned), structuration de plans d'activation multicanaux, acquisition et optimisation des parcours clients.",
             "expertise.item4.title": "Pilotage de la performance & data marketing",
-            "expertise.item4.body": "Analyse de la performance marketing et commerciale via des KPIs, tableaux de bord et recommandations actionnables.",
+            "expertise.item4.body": "Analyse de performance marketing et commerciale via des KPIs, tableaux de bord, NPS et recommandations actionnables orient\u00e9es r\u00e9sultats.",
             "expertise.item5.title": "Gestion de projets & coordination d'\u00e9quipes",
-            "expertise.item5.body": "Pilotage de projets marketing et coordination d'\u00e9quipes transverses.",
+            "expertise.item5.body": "Gestion de projet, pilotage de projets marketing et coordination d'\u00e9quipes transverses dans des environnements B2B et B2C.",
             "expertise.item6.title": "CRM, exp\u00e9rience & fid\u00e9lisation",
-            "expertise.item6.body": "Optimisation de la relation client et partenaire pour une croissance durable.",
+            "expertise.item6.body": "Optimisation de la relation client via CRM, fid\u00e9lisation, marketing automation et am\u00e9lioration continue de l'exp\u00e9rience client.",
             "testimonials.eyebrow": "T\u00e9moignages",
             "testimonials.heading": "Pragmatique, strat\u00e9gique et collaboratif.",
             "testimonials.quote1": "\"Nabil allie dynamisme et clart\u00e9 op\u00e9rationnelle. Gr\u00e2ce \u00e0 son implication, notre projet a d\u00e9pass\u00e9 nos attentes.\"",
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "contact.heading": "Envie d'\u00e9changer ?",
             "contact.copy": "Si vous souhaitez consulter mon CV, \u00e9changer ou discuter d'une opportunit\u00e9 correspondant \u00e0 mon profil, je serais ravi d'\u00e9changer avec vous.<br>Vous pouvez remplir le formulaire suivant ou me contacter directement par email:",
             "footer.name": "Nabil EL MERRAHI",
-            "footer.title": "Chef de projet Marketing & Exp\u00e9rience client",
+            "footer.title": "Chef de projet marketing | Performance, digital & Exp\u00e9rience client",
             "footer.social": "Trouvez-moi sur",
             "footer.rights": "\u00a9 2026 - Tous droits r\u00e9serv\u00e9s."
         },
@@ -100,9 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "nav.work": "Projects",
             "nav.contact": "Contact",
             "hero.name": "Nabil EL MERRAHI",
-            "hero.title": "Marketing Project Manager & Customer Experience",
-            "hero.availability": "Seeking a permanent role (CDI) in customer relations <span style=\"white-space: nowrap;\">and B2B customer experience,</span><br>focused on satisfaction and loyalty.",
-            "hero.tagline": "At the intersection of B2B marketing and customer experience, I analyze needs, field feedback, and data to improve customer journeys and satisfaction.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>I turn these insights into concrete actions that strengthen loyalty, performance, and the quality of the customer experience.",
+            "hero.title": "Marketing Project Manager | Performance, Digital & Customer Experience",
+            "hero.availability": "<span style=\"white-space: nowrap;\">Seeking a permanent role (CDI) in marketing, performance,</span><br><span style=\"white-space: nowrap;\">and customer experience, across B2B/B2C environments.</span>",
+            "hero.tagline": "At the interface of marketing, digital, and customer experience, I analyze needs, data, and field feedback to drive concrete, measurable, results-oriented actions.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>I turn these insights into acquisition, loyalty, and customer journey improvement levers, with performance tracking through KPIs, dashboards, and NPS.",
             "hero.cta.primary": "Let's connect!",
             "hero.cta.portfolio": "View my portfolio",
             "about.eyebrow": "About",
@@ -121,19 +121,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "work.heading": "Campaigns and projects where strategy, creativity, and ROI meet.",
             "work.card1.title": "B2B Marketing Project Lead",
             "work.card1.subtitle": "Renault Trucks - Group VOLVO",
-            "work.card1.body": "Performance and customer satisfaction optimization across the network by leading the \"Dealer Survey\" in 70 countries with 1,500 contacts.",
+            "work.card1.body": "Optimized network performance and customer experience by leading the \"Dealer Survey,\" performance analysis, KPI tracking, and dashboard reporting across 70 countries and 1,500 contacts.",
             "work.card1.result1": "+40% response rate (vs 2023)",
             "work.card1.result2": "+10 NPS points",
             "work.card1.result3": "Improved scores on 5/6 strategic satisfaction themes",
             "work.card2.title": "Marketing & Sales Coordinator",
-            "work.card2.subtitle": "Devalt Sphere ESN",
-            "work.card2.body": "Built a global marketing strategy for launching ALGOMED, a medical SaaS platform:",
+            "work.card2.subtitle": "ATLECS - AgriTech & Innovation ESN",
+            "work.card2.body": "Built a global marketing strategy to launch ALGOMED, a medical SaaS platform, including project management, lead generation, marketing automation, and customer journey management:",
             "work.card2.result1": "+38% prospect-to-client conversion",
             "work.card2.result2": "+85% social engagement",
             "work.card2.result3": "73% of marketing goals achieved",
             "work.card3.title": "Digital Marketer",
             "work.card3.subtitle": "WeBoost Group - Digital Agency",
-            "work.card3.body": "Designed and ran paid campaigns (Meta Ads, Google Ads, SM) and digital strategies for 15+ clients.",
+            "work.card3.body": "Designed and managed paid campaigns (Meta Ads, Google Ads, SM), digital acquisition, and performance analysis for 15+ clients.",
             "work.card3.result1": "Improved e-reputation for WeBoost and clients via Google My Business.",
             "work.card3.result2": "Tracked key KPIs (ROAS, CPA, AOV...)",
             "work.card3.result3": "ROI-focused marketing performance management.",
@@ -162,13 +162,13 @@ document.addEventListener("DOMContentLoaded", () => {
             "expertise.item2.title": "Branding & digital presence",
             "expertise.item2.body": "Brand development through social media management, audiovisual content creation, and community management.",
             "expertise.item3.title": "Digital marketing & activation",
-            "expertise.item3.body": "Running digital programs (paid, owned, earned), crafting multichannel activation plans, and optimizing customer journeys.",
+            "expertise.item3.body": "Managing campaigns and digital programs (paid, owned, earned), building multichannel activation plans, driving acquisition, and optimizing customer journeys.",
             "expertise.item4.title": "Performance management & data marketing",
-            "expertise.item4.body": "Analyzing marketing and sales performance through KPIs, dashboards, and actionable recommendations.",
+            "expertise.item4.body": "Analyzing marketing and sales performance through KPIs, dashboards, NPS, and actionable, results-oriented recommendations.",
             "expertise.item5.title": "Project management & team coordination",
-            "expertise.item5.body": "Leading marketing projects and coordinating cross-functional teams.",
+            "expertise.item5.body": "Project management, marketing project leadership, and cross-functional team coordination in B2B and B2C environments.",
             "expertise.item6.title": "CRM, experience & loyalty",
-            "expertise.item6.body": "Optimizing customer and partner relationships for durable growth.",
+            "expertise.item6.body": "Optimizing customer relationships through CRM, loyalty, marketing automation, and continuous customer experience improvement.",
             "testimonials.eyebrow": "Testimonials",
             "testimonials.heading": "Pragmatic, strategic, and collaborative.",
             "testimonials.quote1": "\"Nabil combines drive with operational clarity. Thanks to his commitment, our project exceeded expectations.\"",
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "contact.heading": "Ready to talk?",
             "contact.copy": "If you would like to review my CV, connect, or discuss an opportunity that matches my profile, I would be delighted to speak with you.<br>You can fill out the following form or contact me directly by email:",
             "footer.name": "Nabil EL MERRAHI",
-            "footer.title": "Marketing Project Manager & Customer Experience",
+            "footer.title": "Marketing Project Manager | Performance, Digital & Customer Experience",
             "footer.social": "Find me on",
             "footer.rights": "\u00a9 2026 - All rights reserved."
         }
@@ -300,9 +300,14 @@ document.addEventListener("DOMContentLoaded", () => {
             heroAvailability.style.setProperty("--bubble-shift-x", "0px");
             return;
         }
+        if (document.documentElement.getAttribute("lang") === "en") {
+            heroAvailability.style.setProperty("--bubble-shift-x", "0px");
+            return;
+        }
 
         const bubbleRect = heroAvailability.getBoundingClientRect();
         const portraitRect = heroMainPortrait.getBoundingClientRect();
+        const contentRect = heroAvailability.parentElement?.getBoundingClientRect();
         if (!bubbleRect.width || !portraitRect.width) return;
 
         // Rightmost tiny tail dot sits ~3px before bubble's right edge in current CSS artwork.
@@ -312,7 +317,16 @@ document.addEventListener("DOMContentLoaded", () => {
             getComputedStyle(heroAvailability).getPropertyValue("--bubble-shift-x")
         ) || 0;
         const delta = targetEdge - tailDotRightEdge;
-        const nextShift = Math.max(-40, Math.min(1200, currentShift + delta));
+        const viewportPadding = 16;
+        const minShiftFromViewport = currentShift + (viewportPadding - bubbleRect.left);
+        const maxShiftFromViewport = currentShift + ((window.innerWidth - viewportPadding) - bubbleRect.right);
+        const minShiftFromContent = contentRect
+            ? currentShift + (contentRect.left - bubbleRect.left)
+            : -40;
+        const unclampedShift = currentShift + delta;
+        const minShift = Math.max(-40, minShiftFromViewport, minShiftFromContent);
+        const maxShift = Math.min(1200, maxShiftFromViewport);
+        const nextShift = Math.max(minShift, Math.min(maxShift, unclampedShift));
         heroAvailability.style.setProperty("--bubble-shift-x", `${Math.round(nextShift)}px`);
     };
 
