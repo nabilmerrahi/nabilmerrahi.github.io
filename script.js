@@ -1,592 +1,257 @@
-// Smooth scroll, active link highlighting, mobile nav, reveal animations, and i18n toggle
 document.addEventListener("DOMContentLoaded", () => {
+    const CALENDLY_URL = "";
+    const EMAIL = "nabil.elmerrahi@gmail.com";
+
     const translations = {
-        fr: {
-            "nav.presentation": "Pr\u00e9sentation",
-            "nav.about": "\u00c0 propos",
-            "nav.collabs": "Collaborations",
-            "nav.work": "Projets",
-            "nav.contact": "Contact",
-            "hero.name": "Nabil EL MERRAHI",
-            "hero.title": "Marketing B2B, Customer Experience & Digital Performance",
-            "hero.availability": "Disponible imm\u00e9diatement pour un CDI en France.",
-            "hero.tagline": "\u00c0 l'interface du marketing, du digital et de l'exp\u00e9rience client, j'analyse les besoins, les donn\u00e9es et les retours terrain pour aider les entreprises B2B et SaaS \u00e0 mieux acqu\u00e9rir, engager et fid\u00e9liser leurs clients gr\u00e2ce au marketing, au CRM, \u00e0 la data et \u00e0 la coordination de projets.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>Mon approche consiste \u00e0 transformer ces insights en actions concr\u00e8tes et mesurables pour soutenir l'acquisition, renforcer la fid\u00e9lisation et am\u00e9liorer le customer journey, avec un pilotage de la performance fond\u00e9 sur les KPI, les tableaux de bord et le NPS.",
-            "hero.cta.primary": "Prenons contact !",
-            "hero.cta.portfolio": "Consulter mon portfolio",
-            "about.eyebrow": "\u00c0 propos",
-            "about.heading": "Derri\u00e8re le Marketeur",
-            "about.body1": "Derri\u00e8re les strat\u00e9gies et les chiffres, il y a un humain, \u00e0 l'esprit cr\u00e9atif, anim\u00e9 par l'exigence et la performance. Form\u00e9 au marketing, entre la France et le Maroc, j'ai d\u00e9velopp\u00e9 une vision \u00e0 la fois strat\u00e9gique et profond\u00e9ment ancr\u00e9e dans la r\u00e9alit\u00e9 du terrain, notamment dans des environnements internationaux.",
-            "about.body2": "Personnellement, je crois que le marketing n'a de valeur que s'il est \u00e0 l'\u00e9coute du march\u00e9, connect\u00e9 aux \u00e9quipes terrain et r\u00e9solument orient\u00e9 r\u00e9sultats.",
-            "timeline.2025.title": "IAE Lyon - France",
-            "timeline.2025.body": "Master 2 en Marketing et Vente B2B.",
-            "timeline.2024.title": "ENCG F\u00e8s - Maroc",
-            "timeline.2024.body": "Dipl\u00f4me des \u00c9coles Nationales de Commerce et de Gestion,<br>option Marketing et Action Commerciale",
-            "timeline.2023.title": "Certifi\u00e9 Google",
-            "timeline.2023.body": "Manager de projet professionnel",
-            "collabs.eyebrow": "Collaborations & r\u00e9f\u00e9rences",
-            "collabs.heading": "Marques et \u00e9quipes engag\u00e9es dans la performance :",
-            "work.eyebrow": "Projets",
-            "work.heading": "Campagnes et projets o\u00f9 strat\u00e9gie, cr\u00e9ativit\u00e9 et ROI se rencontrent.",
-            "work.card1.title": "Renault Trucks - Marketing B2B & Customer Success",
-            "work.card1.subtitle": "R\u00e9seau international - Groupe Volvo",
-            "work.card1.body": "Optimisation de la performance et de l'exp\u00e9rience client du r\u00e9seau via le pilotage de la \"Dealer Survey\", l'analyse de performance, le suivi des KPIs et des tableaux de bord dans 74 pays aupr\u00e8s de 1 500 contacts.",
-            "work.card1.result1": "+40 % de taux de r\u00e9ponse (vs 2023)",
-            "work.card1.result2": "+10 points de NPS",
-            "work.card1.result3": "Am\u00e9lioration sur 5/6 des th\u00e8mes strat\u00e9giques de satisfaction",
-            "work.card7.title": "Quanta Edge - Customer Experience, acquisition B2B & CRM",
-            "work.card7.subtitle": "B2B IoT - Bruxelles, Belgique",
-            "work.card7.body": "Pilotage du Customer Success et de l'exp\u00e9rience client B2B IoT pour fluidifier le customer journey, de la VoC \u00e0 l'adoption.",
-            "work.card7.result1": "VoC, feedback, satisfaction & suivi NPS",
-            "work.card7.result2": "Parcours client, adoption & irritants CRM",
-            "work.card7.result3": "Coordination transverse & recommandations d'am\u00e9lioration",
-            "work.card2.title": "ALGOMED - Go-to-Market SaaS & coordination",
-            "work.card2.subtitle": "ATLECS - AgriTech & HealthTech",
-            "work.card2.body": "D\u00e9veloppement d'une strat\u00e9gie marketing globale pour le lancement d'ALGOMED, service SaaS de gestion m\u00e9dicale, avec gestion de projet, lead generation, marketing automation et pilotage du customer journey :",
-            "work.card2.result1": "+38 % de conversion prospects/clients",
-            "work.card2.result2": "+85 % d'engagement sur les r\u00e9seaux sociaux",
-            "work.card2.result3": "73 % des objectifs marketing atteints",
-            "work.card3.title": "WeBoost - Marketing digital & performance",
-            "work.card3.subtitle": "Agence digitale - 35+ clients",
-            "work.card3.body": "\u00c9laboration et pilotage de campagnes publicitaires payantes (Meta Ads, Google Ads, SM), acquisition digitale et analyse de performance pour plus de 35 clients.",
-            "work.card3.result1": "Optimisation de l'e-r\u00e9putation de WeBoost et de ses clients via Google My Business.",
-            "work.card3.result2": "Suivi des KPIs cl\u00e9s (ROAS, CPA, AOV...)",
-            "work.card3.result3": "Pilotage de la performance marketing orient\u00e9 ROI et rentabilit\u00e9.",
-            "work.card4.title": "Merch by Amazon - E-commerce & acquisition",
-            "work.card4.subtitle": "Print-on-Demand - Europe & Am\u00e9rique du Nord",
-            "work.card4.body": "De l'\u00e9tude de march\u00e9 \u00e0 l'activation marketing, avec un focus sur la cr\u00e9ation produit, l'optimisation SEO et la performance des campagnes publicitaires.",
-            "work.card4.result1": "+1 200 unit\u00e9s vendues sur les march\u00e9s europ\u00e9en et nord-am\u00e9ricain",
-            "work.card4.result2": "Budget publicitaire pilot\u00e9 : ~2 500 \u20ac",
-            "work.card4.result3": "ROAS moyen estim\u00e9 \u00e0 3,2",
-            "work.card5.title": "Outlier AI - IA g\u00e9n\u00e9rative & qualit\u00e9 des mod\u00e8les",
-            "work.card5.subtitle": "Projets multilingues - FR / EN",
-            "work.card5.body": "\u00c9valuation et am\u00e9lioration de mod\u00e8les d'intelligence artificielle, incluant des mod\u00e8les analytiques, g\u00e9n\u00e9ratifs et des LLM, dans des contextes multilingues.",
-            "work.card5.result1": "6 projets IA et LLM (FR / EN)",
-            "work.card5.result2": "\u00c9valuation, am\u00e9lioration et tutorat des mod\u00e8les",
-            "work.card5.result3": "Analyse NLP, texte et image",
-            "work.card6.title": "Episteme Passion - SEO, contenu & croissance organique",
-            "work.card6.subtitle": "M\u00e9dia digital & mon\u00e9tisation",
-            "work.card6.body": "Gestion d'un blog informatif, avec une approche orient\u00e9e contenu, SEO et mon\u00e9tisation.",
-            "work.card6.result1": "+100 contenus \u00e9ditoriaux r\u00e9dig\u00e9s et optimis\u00e9s SEO",
-            "work.card6.result2": "Mon\u00e9tisation AdSense organique atteinte en 3 mois",
-            "work.card6.result3": "+1 700 lecteurs actifs mensuels",
-            "expertise.eyebrow": "Expertises",
-            "expertise.heading": "Strat\u00e9gie, performance et storytelling au service d'une croissance durable.",
-            "expertise.item1.title": "Strat\u00e9gie marketing & positionnement",
-            "expertise.item1.body": "Structuration de strat\u00e9gies marketing B2B et B2C align\u00e9es sur les enjeux business, int\u00e9grant \u00e9tudes de march\u00e9 et veille concurrentielle.",
-            "expertise.item2.title": "Branding & pr\u00e9sence digitale",
-            "expertise.item2.body": "D\u00e9veloppement de l'image de marque \u00e0 travers la gestion des r\u00e9seaux sociaux, la cr\u00e9ation de contenus audiovisuels et le community management.",
-            "expertise.item3.title": "Marketing digital & activation",
-            "expertise.item3.body": "Pilotage de campagnes et de dispositifs digitaux (paid, owned, earned), structuration de plans d'activation multicanaux, acquisition et optimisation des parcours clients.",
-            "expertise.item4.title": "Pilotage de la performance & data marketing",
-            "expertise.item4.body": "Analyse de performance marketing et commerciale via des KPIs, tableaux de bord, NPS et recommandations actionnables orient\u00e9es r\u00e9sultats.",
-            "expertise.item5.title": "Gestion de projets & coordination d'\u00e9quipes",
-            "expertise.item5.body": "Gestion de projet, pilotage de projets marketing et coordination d'\u00e9quipes transverses dans des environnements B2B et B2C.",
-            "expertise.item6.title": "CRM, exp\u00e9rience & fid\u00e9lisation",
-            "expertise.item6.body": "Optimisation de la relation client via CRM, fid\u00e9lisation, marketing automation et am\u00e9lioration continue de l'exp\u00e9rience client.",
-            "expertise.item7.title": "Lancement SaaS & go-to-market",
-            "expertise.item7.body": "Structuration et d\u00e9ploiement d'actions marketing pour accompagner le lancement, l'adoption et la mont\u00e9e en visibilit\u00e9 de solutions SaaS.",
-            "expertise.item8.title": "Parcours prospect & conversion",
-            "expertise.item8.body": "Analyse des points de contact et des freins du parcours afin d'am\u00e9liorer la qualification, l'engagement et le passage du prospect \u00e0 l'action.",
-            "expertise.item9.title": "Marketing partenaires & coordination internationale",
-            "expertise.item9.body": "Coordination d'actions marketing et d'exp\u00e9rience partenaires dans des environnements internationaux impliquant plusieurs march\u00e9s et parties prenantes.",
-            "testimonials.eyebrow": "T\u00e9moignages",
-            "testimonials.heading": "Pragmatique, strat\u00e9gique et collaboratif.",
-            "testimonials.quote1": "\"Nabil allie dynamisme et clart\u00e9 op\u00e9rationnelle. Gr\u00e2ce \u00e0 son implication, notre projet a d\u00e9pass\u00e9 nos attentes.\"",
-            "testimonials.person1": "Val\u00e9rie Lyonnet - Dir. Exp\u00e9rience client, Renault Trucks",
-            "testimonials.quote2": "\"Un profil \u00e0 fort potentiel, capable d'apporter de la valeur partout o\u00f9 l'exigence et l'engagement comptent.\"",
-            "testimonials.person2": "Youssef EL HASSANI - PhD en Marketing, ENCGF-USMBA",
-            "testimonials.quote3": "\"Orient\u00e9 data et \u00e0 l'\u00e9coute de l'\u00e9quipe, Nabil a optimis\u00e9 notre management et nos ventes SaaS, am\u00e9liorant r\u00e9sultats et moral.\"",
-            "testimonials.person3": "Lahcen D. - CEO, Quanta Edge",
-            "contact.eyebrow": "Contact",
-            "contact.heading": "Envie d'\u00e9changer ?",
-            "contact.copy": "Je recherche actuellement un CDI en France autour du <strong>Marketing B2B, de la Customer Experience ou de la Digital Performance</strong>.<br>Si mon profil peut r\u00e9pondre \u00e0 l'un de vos enjeux, je serais ravi d'\u00e9changer avec vous.<br>Vous pouvez remplir le formulaire suivant ou me contacter directement par email:",
-            "footer.name": "Nabil EL MERRAHI",
-            "footer.title": "Chef de projet marketing | Performance, digital & Exp\u00e9rience client",
-            "footer.social": "Trouvez-moi sur",
-            "footer.rights": "\u00a9 2026 - Tous droits r\u00e9serv\u00e9s."
-        },
         en: {
-            "nav.presentation": "Presentation",
+            "nav.home": "Home",
+            "nav.services": "Services",
+            "nav.method": "Method",
+            "nav.work": "Case studies",
             "nav.about": "About",
-            "nav.collabs": "Collaborations",
-            "nav.work": "Projects",
             "nav.contact": "Contact",
+            "hero.brand": "STRATEKICK · Independent consulting",
             "hero.name": "Nabil EL MERRAHI",
-            "hero.title": "B2B Marketing, Customer Experience & Digital Performance",
-            "hero.availability": "Available immediately for a permanent position in France.",
-            "hero.tagline": "At the intersection of marketing, digital, and customer experience, I analyze needs, data, and field feedback to help B2B and SaaS companies acquire, engage, and retain customers more effectively through marketing, CRM, data, and project coordination.<br><span class=\"tagline-gap\" aria-hidden=\"true\"></span>My approach is to turn these insights into concrete, measurable actions that support acquisition, strengthen retention, and improve the customer journey, with performance management based on KPIs, dashboards, and NPS.",
-            "hero.cta.primary": "Let's connect!",
-            "hero.cta.portfolio": "View my portfolio",
+            "hero.title": "Consultant in marketing strategy, B2B business development and digital performance",
+            "hero.tagline": "I help SMEs define and implement marketing and sales strategies tailored to their ambitions. From positioning to digital visibility, from acquisition to retention, I combine strategic advice, creativity and concrete action to grow their business and improve performance over the long term.",
+            "hero.cta.primary": "Let's discuss your project",
+            "hero.cta.secondary": "Explore how I can help",
+            "hero.cta.portfolio": "My portfolio",
+            "challenges.eyebrow": "Your challenges",
+            "challenges.heading": "The offer exists. Now it needs a system that makes it visible, desirable and effective.",
+            "challenges.item1.title": "Clarify the direction",
+            "challenges.item1.body": "Positioning, target segments and marketing priorities are not clear enough to guide decisions.",
+            "challenges.item2.title": "Structure acquisition",
+            "challenges.item2.body": "Prospecting and digital initiatives remain fragmented, with little continuity between marketing and sales.",
+            "challenges.item3.title": "Manage performance",
+            "challenges.item3.body": "Actions are launched without a shared dashboard or sufficiently useful indicators to guide trade-offs.",
+            "services.eyebrow": "Services",
+            "services.heading": "Three ways to move from scattered initiatives to a coherent strategy.",
+            "services.intro": "Every engagement starts by understanding the context and is tailored to the company's goals, resources and level of autonomy.",
+            "services.item1.label": "Signature service",
+            "services.item1.title": "Marketing and sales diagnosis & strategy",
+            "services.item1.body": "Clarify the market, positioning and priorities to create a strategy that can be put into action immediately.",
+            "services.item1.point1": "Marketing and sales diagnosis",
+            "services.item1.point2": "Segmentation, targeting and positioning",
+            "services.item1.point3": "90-day operational action plan",
+            "services.item1.point4": "KPIs and management dashboard",
+            "services.item2.label": "Visibility & engagement",
+            "services.item2.title": "Content & digital communication",
+            "services.item2.body": "Build a consistent presence that showcases expertise, grows awareness and supports acquisition.",
+            "services.item2.point1": "Editorial strategy and copywriting",
+            "services.item2.point2": "Visuals, short-form video and light editing",
+            "services.item2.point3": "Community management and engagement",
+            "services.item2.point4": "Coordination of specialist partners",
+            "services.item3.label": "Delivery & measurement",
+            "services.item3.title": "Support & targeted execution",
+            "services.item3.body": "Turn recommendations into action, support teams and adjust levers based on results.",
+            "services.item3.point1": "B2B prospecting and CRM optimization",
+            "services.item3.point2": "Campaign and acquisition monitoring",
+            "services.item3.point3": "Retention and customer journey",
+            "services.item3.point4": "Reporting and continuous optimization",
+            "services.note": "One-off interventions, multi-week projects or ongoing support - remotely\u00a0or\u00a0on\u00a0site, quoted to scope.",
+            "method.eyebrow": "My method",
+            "method.heading": "Understand before acting. Prioritize before deploying. Measure to improve.",
+            "method.step1.title": "Diagnosis",
+            "method.step1.body": "Understand the market, offer, customers, resources and points of friction.",
+            "method.step2.title": "Strategy",
+            "method.step2.body": "Define positioning, targets, objectives and the highest-impact levers.",
+            "method.step3.title": "Delivery",
+            "method.step3.body": "Organize the action plan, support teams and execute targeted interventions.",
+            "method.step4.title": "Performance management",
+            "method.step4.body": "Track KPIs, analyze results and adjust actions pragmatically.",
+            "work.eyebrow": "Case studies",
+            "work.heading": "Strategy, creation, coordination and measurement in practice.",
+            "work.case1.tag": "SaaS go-to-market",
+            "work.case1.title": "ALGOMED - structuring launch and acquisition",
+            "work.case1.body": "Designed and deployed the go-to-market strategy, digital content, marketing campaigns and performance monitoring.",
+            "work.case1.result1": "73% of marketing objectives achieved",
+            "work.case1.result2": "+38% prospect-to-client conversion",
+            "work.case1.result3": "+85% social media engagement",
+            "work.case2.tag": "Content & digital performance",
+            "work.case2.title": "WeBoost Group - managing multi-client activations",
+            "work.case2.body": "Editorial strategies, publishing calendars, content creation, campaign management, SEO/SEA and reporting in a multi-client environment.",
+            "work.case2.result1": "Production of directly actionable deliverables",
+            "work.case2.result2": "Visibility, acquisition and profitability KPI tracking",
+            "work.case2.result3": "Coordination of multiple needs and timelines",
+            "work.case3.tag": "B2B marketing & partner experience",
+            "work.case3.title": "Renault Trucks - turning feedback into decisions",
+            "work.case3.body": "Coordinated an international B2B listening program, KPI analysis, reporting and network improvement recommendations.",
+            "work.case3.result1": "More than 1,500 contacts across 74 countries",
+            "work.case3.result2": "+10 NPS points compared with 2023",
+            "work.case3.result3": "International coordination and actionable recommendations",
+            "collabs.eyebrow": "Experience & environments",
+            "collabs.heading": "Different contexts, the same commitment to clarity and performance.",
             "about.eyebrow": "About",
-            "about.heading": "Behind the Marketer",
-            "about.body1": "Behind the strategies and the numbers is a human with a creative mindset, driven by rigor and performance. Trained in marketing between France and Morocco, I've developed a strategic vision that is deeply rooted in real-world execution, especially in international environments.",
-            "about.body2": "I believe marketing only has value when it listens to the market, stays connected to field teams, and stays relentlessly results-driven.",
-            "timeline.2025.title": "IAE Lyon - France",
-            "timeline.2025.body": "Master's in Marketing and B2B Sales.",
-            "timeline.2024.title": "ENCG F\u00e8s - Morocco",
-            "timeline.2024.body": "National School of Commerce and Management diploma,<br>Marketing and Commercial Action track",
-            "timeline.2023.title": "Certified by Google",
-            "timeline.2023.body": "Professional project manager",
-            "collabs.eyebrow": "Collaborations & references",
-            "collabs.heading": "Brands and teams committed to performance:",
-            "work.eyebrow": "Projects",
-            "work.heading": "Campaigns and projects where strategy, creativity, and ROI meet.",
-            "work.card1.title": "Renault Trucks - B2B Marketing & Customer Success",
-            "work.card1.subtitle": "International dealer network - Volvo Group",
-            "work.card1.body": "Optimized network performance and customer experience by leading the \"Dealer Survey,\" performance analysis, KPI tracking, and dashboard reporting across 74 countries and 1,500 contacts.",
-            "work.card1.result1": "+40% response rate (vs 2023)",
-            "work.card1.result2": "+10 NPS points",
-            "work.card1.result3": "Improved scores on 5/6 strategic satisfaction themes",
-            "work.card7.title": "Quanta Edge - Customer Experience, B2B Acquisition & CRM",
-            "work.card7.subtitle": "B2B IoT - Brussels, Belgium",
-            "work.card7.body": "Led Customer Success and B2B customer experience in IoT to streamline the customer journey, from VoC to adoption.",
-            "work.card7.result1": "VoC, feedback, satisfaction & NPS tracking",
-            "work.card7.result2": "Customer journey, adoption & CRM pain points",
-            "work.card7.result3": "Cross-functional coordination & improvement actions",
-            "work.card2.title": "ALGOMED - SaaS Go-to-Market & Coordination",
-            "work.card2.subtitle": "ATLECS - AgriTech & HealthTech",
-            "work.card2.body": "Built a global marketing strategy to launch ALGOMED, a medical SaaS platform, including project management, lead generation, marketing automation, and customer journey management:",
-            "work.card2.result1": "+38% prospect-to-client conversion",
-            "work.card2.result2": "+85% social engagement",
-            "work.card2.result3": "73% of marketing goals achieved",
-            "work.card3.title": "WeBoost - Digital Marketing & Performance",
-            "work.card3.subtitle": "Digital agency - 35+ clients",
-            "work.card3.body": "Designed and managed paid campaigns (Meta Ads, Google Ads, SM), digital acquisition, and performance analysis for 35+ clients.",
-            "work.card3.result1": "Improved e-reputation for WeBoost and clients via Google My Business.",
-            "work.card3.result2": "Tracked key KPIs (ROAS, CPA, AOV...)",
-            "work.card3.result3": "ROI-focused marketing performance management.",
-            "work.card4.title": "Merch by Amazon - E-commerce & Acquisition",
-            "work.card4.subtitle": "Print-on-Demand - Europe & North America",
-            "work.card4.body": "From market research to marketing activation, with focus on product creation, SEO, and paid campaign performance.",
-            "work.card4.result1": "1,200+ units sold in European and North American markets",
-            "work.card4.result2": "Managed ad budget: ~\u20ac2,500",
-            "work.card4.result3": "Average ROAS estimated at 3.2",
-            "work.card5.title": "Outlier AI - Generative AI & Model Quality",
-            "work.card5.subtitle": "Multilingual projects - FR / EN",
-            "work.card5.body": "Evaluated and improved AI models, including analytical, generative, and LLM systems, in multilingual contexts.",
-            "work.card5.result1": "6 AI and LLM projects (FR / EN)",
-            "work.card5.result2": "Model evaluation, improvement, and tutoring",
-            "work.card5.result3": "NLP, text, and image analysis",
-            "work.card6.title": "Episteme Passion - SEO, Content & Organic Growth",
-            "work.card6.subtitle": "Digital media & monetization",
-            "work.card6.body": "Managed an informational blog with a content-, SEO-, and monetization-driven approach.",
-            "work.card6.result1": "100+ editorial pieces written and SEO-optimized",
-            "work.card6.result2": "Organic AdSense monetization reached in 3 months",
-            "work.card6.result3": "1,700+ monthly active readers",
-            "expertise.eyebrow": "Expertise",
-            "expertise.heading": "Strategy, performance, and storytelling that fuel sustainable growth.",
-            "expertise.item1.title": "Marketing strategy & positioning",
-            "expertise.item1.body": "Building B2B and B2C marketing strategies aligned to business goals, including market research and competitive intelligence.",
-            "expertise.item2.title": "Branding & digital presence",
-            "expertise.item2.body": "Brand development through social media management, audiovisual content creation, and community management.",
-            "expertise.item3.title": "Digital marketing & activation",
-            "expertise.item3.body": "Managing campaigns and digital programs (paid, owned, earned), building multichannel activation plans, driving acquisition, and optimizing customer journeys.",
-            "expertise.item4.title": "Performance management & data marketing",
-            "expertise.item4.body": "Analyzing marketing and sales performance through KPIs, dashboards, NPS, and actionable, results-oriented recommendations.",
-            "expertise.item5.title": "Project management & team coordination",
-            "expertise.item5.body": "Project management, marketing project leadership, and cross-functional team coordination in B2B and B2C environments.",
-            "expertise.item6.title": "CRM, experience & loyalty",
-            "expertise.item6.body": "Optimizing customer relationships through CRM, loyalty, marketing automation, and continuous customer experience improvement.",
-            "expertise.item7.title": "SaaS launch & go-to-market",
-            "expertise.item7.body": "Structuring and deploying marketing initiatives to support the launch, adoption, and growing visibility of SaaS solutions.",
-            "expertise.item8.title": "Prospect journey & conversion",
-            "expertise.item8.body": "Analyzing touchpoints and journey friction to improve qualification, engagement, and the prospect's progression to action.",
-            "expertise.item9.title": "Partner marketing & international coordination",
-            "expertise.item9.body": "Coordinating marketing and partner experience initiatives across international environments involving multiple markets and stakeholders.",
+            "about.heading": "One point of contact, from thinking to action.",
+            "about.body1": "Trained in B2B marketing and sales between France and Morocco, I work at the intersection of strategy, creativity and execution. My role is to help leaders step back, select the right priorities and turn their ambitions into a realistic plan.",
+            "about.body2": "Every engagement is built on listening, transparency and measurement. I use data and, when it creates real value, artificial intelligence to enrich analysis, accelerate creation and optimize actions - always under professional oversight.",
+            "about.pillar1": "Tailored",
+            "about.pillar2": "Close collaboration",
+            "about.pillar3": "Useful innovation",
+            "about.pillar4": "Measurable outcomes",
+            "timeline.2025": "Master's degree in B2B Marketing & Sales",
+            "timeline.2024": "Degree in Marketing & Commercial Action",
+            "timeline.2023.title": "Google certification",
+            "timeline.2023.body": "Professional project management",
             "testimonials.eyebrow": "Testimonials",
-            "testimonials.heading": "Pragmatic, strategic, and collaborative.",
-            "testimonials.quote1": "\"Nabil combines drive with operational clarity. Thanks to his commitment, our project exceeded expectations.\"",
-            "testimonials.person1": "Val\u00e9rie Lyonnet - Director, Customer Experience, Renault Trucks",
-            "testimonials.quote2": "\"A high-potential profile, able to add value anywhere rigor and commitment matter.\"",
-            "testimonials.person2": "Youssef EL HASSANI - PhD in Marketing, ENCGF-USMBA",
-            "testimonials.quote3": "\"Data-led and empathetic with the team, Nabil optimized our management and SaaS sales, improving both results and morale.\"",
-            "testimonials.person3": "Lahcen D. - CEO, Quanta Edge",
-            "contact.eyebrow": "Contact",
-            "contact.heading": "Ready to talk?",
-            "contact.copy": "I am currently looking for a permanent position in France in <strong>B2B Marketing, Customer Experience, or Digital Performance</strong>.<br>If my profile could help address one of your challenges, I would be delighted to speak with you.<br>You can fill out the following form or contact me directly by email:",
-            "footer.name": "Nabil EL MERRAHI",
-            "footer.title": "Marketing Project Manager | Performance, Digital & Customer Experience",
-            "footer.social": "Find me on",
-            "footer.rights": "\u00a9 2026 - All rights reserved."
+            "testimonials.heading": "Operational clarity, commitment and teamwork.",
+            "testimonials.quote1": "“Nabil combines drive with operational clarity. Thanks to his commitment, our project exceeded our expectations.”",
+            "testimonials.quote2": "“A high-potential professional, able to add value wherever rigor and commitment matter.”",
+            "testimonials.quote3": "“Data-led and attentive to the team, Nabil improved our management and SaaS sales, strengthening both results and team dynamics.”",
+            "contact.eyebrow": "Let's discuss your project",
+            "contact.heading": "What is the next priority to structure?",
+            "contact.copy": "Tell me about your context, objectives and main obstacles. A first 20- to 30-minute conversation will help assess your priorities and whether working together makes sense.",
+            "contact.email": "Send an email",
+            "contact.calendly": "Book a call",
+            "contact.location": "Orléans, Centre-Val de Loire · In-person / remote engagements throughout Europe and France",
+            "form.eyebrow": "Request a quote",
+            "form.heading": "Briefly describe your needs",
+            "form.name": "Full name",
+            "form.company": "Company",
+            "form.email": "Business email",
+            "form.need": "Main need",
+            "form.need.placeholder": "Select an option",
+            "form.need.strategy": "Diagnosis and strategy",
+            "form.need.content": "Content and digital communication",
+            "form.need.execution": "Support and execution",
+            "form.need.other": "Other need",
+            "form.message": "Context, objectives and timeline",
+            "form.submit": "Prepare my request",
+            "form.note": "Your email app will open with the information entered. Nothing is sent automatically.",
+            "footer.name": "Nabil EL MERRAHI · STRATEKICK",
+            "footer.title": "Marketing strategy, B2B business development and digital performance consulting",
+            "footer.social": "Find me",
+            "footer.rights": "© 2026 - All rights reserved."
         }
     };
 
-    const navLinks = document.querySelectorAll(".nav-link");
-    const nav = document.getElementById("navbar");
-    const scrollProgressBar = document.querySelector(".scroll-progress__bar");
-    const toggle = document.querySelector(".nav-toggle");
+    const french = {};
+    document.querySelectorAll("[data-i18n]").forEach(node => {
+        french[node.dataset.i18n] = node.innerHTML;
+    });
+
+    const langSwitch = document.querySelector(".lang-switch");
     const navMenu = document.querySelector(".nav-links");
-    const langSwitches = document.querySelectorAll(".lang-switch");
-    const blockEvent = event => event.preventDefault();
-    let currentLang = "en";
-    const autoCacheKey = "i18nAutoCache";
-    const autoCache = (() => {
-        try {
-            return JSON.parse(localStorage.getItem(autoCacheKey) || "{}");
-        } catch {
-            return {};
-        }
-    })();
-    const pendingTranslations = {};
-
-    const captureFrenchTranslationsFromDom = () => {
-        const captured = {};
-        document.querySelectorAll("[data-i18n]").forEach(node => {
-            const key = node.dataset.i18n;
-            if (!key) return;
-            captured[key] = node.dataset.i18nHtml === "true"
-                ? node.innerHTML.trim()
-                : node.textContent.trim();
-        });
-        return captured;
-    };
-
-    // The French HTML in index.html is the source of truth.
-    Object.assign(translations.fr, captureFrenchTranslationsFromDom());
-
-    const getDefaultLanguage = () => {
-        const stored = localStorage.getItem("preferredLang");
-        if (stored && translations[stored]) return stored;
-        return "fr";
-    };
-    currentLang = getDefaultLanguage();
-
-    const persistAutoCache = () => {
-        try {
-            localStorage.setItem(autoCacheKey, JSON.stringify(autoCache));
-        } catch {
-            /* noop */
-        }
-    };
-
-    const translateToEnglish = key => {
-        const source = translations.fr[key];
-        if (!source) return Promise.resolve(null);
-
-        const cached = autoCache[key];
-        if (cached && cached.source === source && cached.translated) {
-            translations.en[key] = cached.translated;
-            return Promise.resolve(cached.translated);
-        }
-        if (pendingTranslations[key]) return pendingTranslations[key];
-
-        const payload = {
-            q: source,
-            source: "fr",
-            target: "en",
-            format: source.includes("<br") ? "html" : "text"
-        };
-
-        const promise = fetch("https://libretranslate.de/translate", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
-        })
-            .then(res => (res.ok ? res.json() : null))
-            .then(data => {
-                if (data && data.translatedText) {
-                    translations.en[key] = data.translatedText;
-                    autoCache[key] = {
-                        source,
-                        translated: data.translatedText
-                    };
-                    persistAutoCache();
-                    return data.translatedText;
-                }
-                if (translations.en[key]) return translations.en[key];
-                return null;
-            })
-            .catch(() => translations.en[key] || null)
-            .finally(() => {
-                delete pendingTranslations[key];
-            });
-
-        pendingTranslations[key] = promise;
-        return promise;
-    };
-
-    const updateLangSwitch = lang => {
-        const isEn = lang === "en";
-        langSwitches.forEach(btn => {
-            btn.classList.toggle("is-en", isEn);
-            btn.setAttribute("aria-pressed", String(isEn));
-            btn.setAttribute("aria-label", isEn ? "Switch to French" : "Passer en anglais");
-        });
-    };
-
-    const heroAvailability = document.querySelector(".hero-availability");
-    const heroMainPortrait = document.querySelector(".hero .portrait-stack > .portrait-frame");
-    let heroBubbleRaf = 0;
-
-    const syncHeroBubbleAnchor = () => {
-        if (!heroAvailability || !heroMainPortrait) return;
-        if (window.matchMedia("(max-width: 900px)").matches) {
-            heroAvailability.style.setProperty("--bubble-shift-x", "0px");
-            return;
-        }
-        if (document.documentElement.getAttribute("lang") === "en") {
-            heroAvailability.style.setProperty("--bubble-shift-x", "0px");
-            return;
-        }
-
-        const bubbleRect = heroAvailability.getBoundingClientRect();
-        const portraitRect = heroMainPortrait.getBoundingClientRect();
-        const contentRect = heroAvailability.parentElement?.getBoundingClientRect();
-        if (!bubbleRect.width || !portraitRect.width) return;
-
-        // Rightmost tiny tail dot sits ~3px before bubble's right edge in current CSS artwork.
-        const tailDotRightEdge = bubbleRect.right - 3;
-        const targetEdge = portraitRect.left;
-        const currentShift = parseFloat(
-            getComputedStyle(heroAvailability).getPropertyValue("--bubble-shift-x")
-        ) || 0;
-        const delta = targetEdge - tailDotRightEdge;
-        const viewportPadding = 16;
-        const minShiftFromViewport = currentShift + (viewportPadding - bubbleRect.left);
-        const maxShiftFromViewport = currentShift + ((window.innerWidth - viewportPadding) - bubbleRect.right);
-        const minShiftFromContent = contentRect
-            ? currentShift + (contentRect.left - bubbleRect.left)
-            : -40;
-        const unclampedShift = currentShift + delta;
-        const minShift = Math.max(-40, minShiftFromViewport, minShiftFromContent);
-        const maxShift = Math.min(1200, maxShiftFromViewport);
-        const nextShift = Math.max(minShift, Math.min(maxShift, unclampedShift));
-        heroAvailability.style.setProperty("--bubble-shift-x", `${Math.round(nextShift)}px`);
-    };
-
-    const scheduleHeroBubbleAnchor = () => {
-        if (heroBubbleRaf) return;
-        heroBubbleRaf = requestAnimationFrame(() => {
-            heroBubbleRaf = 0;
-            syncHeroBubbleAnchor();
-        });
-    };
-
-    let progressRaf = 0;
-    const syncScrollProgress = () => {
-        if (!scrollProgressBar) return;
-        const doc = document.documentElement;
-        const scrollable = Math.max(1, doc.scrollHeight - window.innerHeight);
-        const progress = Math.max(0, Math.min(1, window.scrollY / scrollable));
-        scrollProgressBar.style.transform = `scaleX(${progress})`;
-    };
-    const scheduleScrollProgress = () => {
-        if (progressRaf) return;
-        progressRaf = requestAnimationFrame(() => {
-            progressRaf = 0;
-            syncScrollProgress();
-        });
-    };
-
-    const applyTranslations = lang => {
-        const map = translations[lang];
-        if (!map) return;
-        document.documentElement.setAttribute("lang", lang);
-        document.querySelectorAll("[data-i18n]").forEach(node => {
-            const key = node.dataset.i18n;
-            if (!key) return;
-            if (lang === "en") {
-                const fallback = translations.fr[key];
-                if (fallback) {
-                    if (node.dataset.i18nHtml === "true") node.innerHTML = fallback;
-                    else node.textContent = fallback;
-                    translateToEnglish(key).then(translated => {
-                        if (!translated) return;
-                        if (document.documentElement.getAttribute("lang") !== "en") return;
-                        if (node.dataset.i18nHtml === "true") node.innerHTML = translated;
-                        else node.textContent = translated;
-                        scheduleHeroBubbleAnchor();
-                    });
-                }
-                return;
-            }
-            const value = map[key];
-            if (value === undefined) return;
-            if (node.dataset.i18nHtml === "true") node.innerHTML = value;
-            else node.textContent = value;
-        });
-        updateLangSwitch(lang);
-        scheduleHeroBubbleAnchor();
-    };
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const navbar = document.getElementById("navbar");
+    const progressBar = document.querySelector(".scroll-progress__bar");
 
     const setLanguage = lang => {
-        if (!translations[lang]) return;
-        currentLang = lang;
+        const map = lang === "en" ? translations.en : french;
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-i18n]").forEach(node => {
+            const value = map[node.dataset.i18n];
+            if (value !== undefined) node.innerHTML = value;
+        });
+        langSwitch?.classList.toggle("is-en", lang === "en");
+        langSwitch?.setAttribute("aria-pressed", String(lang === "en"));
+        langSwitch?.setAttribute("aria-label", lang === "en" ? "Passer en français" : "Switch to English");
+        document.title = lang === "en"
+            ? "Nabil El Merrahi | B2B Marketing & Business Development Consultant"
+            : "Nabil El Merrahi | Consultant marketing & développement commercial B2B";
+        const description = document.querySelector('meta[name="description"]');
+        if (description) {
+            description.content = lang === "en"
+                ? "Nabil El Merrahi helps B2B service SMEs with marketing strategy, business development, customer acquisition and digital performance."
+                : "Nabil El Merrahi accompagne les TPE et PME de services B2B en stratégie marketing, développement commercial, acquisition et performance digitale, à Orléans et à distance en France.";
+        }
         localStorage.setItem("preferredLang", lang);
-        applyTranslations(lang);
     };
 
-    langSwitches.forEach(btn => {
-        btn.addEventListener("click", () => {
-            setLanguage(currentLang === "en" ? "fr" : "en");
-            if (navMenu && navMenu.classList.contains("open")) {
-                navMenu.classList.remove("open");
-                if (toggle) toggle.setAttribute("aria-expanded", "false");
-            }
-        });
+    let currentLang = localStorage.getItem("preferredLang") === "en" ? "en" : "fr";
+    setLanguage(currentLang);
+    langSwitch?.addEventListener("click", () => {
+        currentLang = currentLang === "fr" ? "en" : "fr";
+        setLanguage(currentLang);
+        navMenu?.classList.remove("open");
+        navToggle?.setAttribute("aria-expanded", "false");
     });
 
-    // Smooth scroll for nav links
     navLinks.forEach(link => {
-        link.addEventListener("click", e => {
-            e.preventDefault();
+        link.addEventListener("click", event => {
             const target = document.querySelector(link.getAttribute("href"));
             if (!target) return;
+            event.preventDefault();
             target.scrollIntoView({ behavior: "smooth" });
-            if (navMenu) navMenu.classList.remove("open");
-            if (toggle) toggle.setAttribute("aria-expanded", "false");
+            navMenu?.classList.remove("open");
+            navToggle?.setAttribute("aria-expanded", "false");
         });
     });
 
-    // Mobile nav toggle
-    if (toggle && navMenu) {
-        toggle.addEventListener("click", () => {
-            const isOpen = navMenu.classList.toggle("open");
-            toggle.setAttribute("aria-expanded", String(isOpen));
-        });
-    }
+    navToggle?.addEventListener("click", () => {
+        const open = navMenu?.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", String(Boolean(open)));
+    });
 
-    // Scroll spy using Intersection Observer
     const sections = document.querySelectorAll("section[id]");
-    const observer = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                const id = entry.target.getAttribute("id");
-                const link = document.querySelector(`.nav-link[href="#${id}"]`);
-                if (!link) return;
-                if (entry.isIntersecting) {
-                    navLinks.forEach(l => l.classList.remove("active"));
-                    link.classList.add("active");
-                }
-            });
-        },
-        { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
-    );
-    sections.forEach(sec => observer.observe(sec));
+    const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            navLinks.forEach(link => link.classList.toggle("active", link.getAttribute("href") === `#${entry.target.id}`));
+        });
+    }, { rootMargin: "-42% 0px -45% 0px", threshold: 0 });
+    sections.forEach(section => sectionObserver.observe(section));
 
-    // Reveal on scroll
-    const revealEls = document.querySelectorAll(".reveal");
-    const revealObserver = new IntersectionObserver(
-        entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.1 }
-    );
-    revealEls.forEach(el => revealObserver.observe(el));
+    const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll(".reveal").forEach(node => revealObserver.observe(node));
 
-    // Work carousel arrows (seamless loop with enough clones for viewport)
-    const workTrack = document.querySelector(".work-track");
-    const workArrows = document.querySelectorAll(".work-arrow");
-    if (workTrack && workArrows.length) {
-        const baseCards = Array.from(workTrack.querySelectorAll(".card"));
-        if (baseCards.length) {
-            let step = 0;
-            let visible = 1;
-            let index = 0;
-            const viewport = workTrack.closest(".work-carousel") || workTrack.parentElement;
+    const syncScroll = () => {
+        navbar?.classList.toggle("scrolled", window.scrollY > 24);
+        if (!progressBar) return;
+        const height = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        progressBar.style.transform = `scaleX(${Math.min(1, Math.max(0, window.scrollY / height))})`;
+    };
+    syncScroll();
+    window.addEventListener("scroll", syncScroll, { passive: true });
+    window.addEventListener("resize", syncScroll);
 
-            const rebuild = () => {
-                workTrack.innerHTML = "";
-                const middle = baseCards.map(card => card.cloneNode(true));
-                middle.forEach(card => workTrack.appendChild(card));
-
-                const styles = getComputedStyle(workTrack);
-                const gap = parseFloat(styles.columnGap || styles.gap || 0) || 0;
-                const firstCard = workTrack.querySelector(".card");
-                if (!firstCard || !viewport) return;
-                step = firstCard.getBoundingClientRect().width + gap;
-                const viewportWidth = viewport.clientWidth;
-                visible = Math.min(baseCards.length, Math.max(1, Math.floor((viewportWidth + gap) / step)));
-
-                // Clone head/tail to cover visible width and avoid gaps
-                const prefix = baseCards.slice(-visible).map(c => c.cloneNode(true));
-                const suffix = baseCards.slice(0, visible).map(c => c.cloneNode(true));
-                prefix.reverse().forEach(clone => workTrack.insertBefore(clone, workTrack.firstChild));
-                suffix.forEach(clone => workTrack.appendChild(clone));
-
-                workTrack.querySelectorAll(".card").forEach(card => card.classList.add("visible"));
-
-                index = visible;
-                workTrack.style.transition = "none";
-                workTrack.style.transform = `translateX(${-index * step}px)`;
-                requestAnimationFrame(() => {
-                    workTrack.style.transition = "transform 0.35s ease";
-                });
-
-                applyTranslations(currentLang);
-            };
-
-            const snapIfLooped = () => {
-                const total = baseCards.length;
-                if (index < visible) {
-                    index += total;
-                    workTrack.style.transition = "none";
-                    workTrack.style.transform = `translateX(${-index * step}px)`;
-                    requestAnimationFrame(() => {
-                        workTrack.style.transition = "transform 0.35s ease";
-                    });
-                } else if (index >= total + visible) {
-                    index -= total;
-                    workTrack.style.transition = "none";
-                    workTrack.style.transform = `translateX(${-index * step}px)`;
-                    requestAnimationFrame(() => {
-                        workTrack.style.transition = "transform 0.35s ease";
-                    });
-                }
-            };
-
-            const move = dir => {
-                index += dir;
-                workTrack.style.transform = `translateX(${-index * step}px)`;
-            };
-
-            workTrack.addEventListener("transitionend", snapIfLooped);
-            workArrows.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const dir = btn.dataset.dir === "next" ? 1 : -1;
-                    move(dir);
-                });
-            });
-
-            rebuild();
-            window.addEventListener("resize", rebuild);
-        }
+    const calendlyLink = document.getElementById("calendly-link");
+    if (calendlyLink && CALENDLY_URL) {
+        calendlyLink.href = CALENDLY_URL;
+        calendlyLink.hidden = false;
     }
 
-    // Light friction against saving/downloading asset images
-    const installAssetGuards = () => {
-        const assetImages = document.querySelectorAll('img[src^="assets/"]');
-        assetImages.forEach(img => {
-            img.setAttribute("draggable", "false");
-            img.addEventListener("contextmenu", blockEvent);
-            img.addEventListener("dragstart", blockEvent);
+    document.getElementById("project-form")?.addEventListener("submit", event => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const isEnglish = document.documentElement.lang === "en";
+        const subject = isEnglish
+            ? `Project enquiry - ${form.get("company")}`
+            : `Demande de projet - ${form.get("company")}`;
+        const lines = isEnglish
+            ? [
+                `Name: ${form.get("name")}`,
+                `Company: ${form.get("company")}`,
+                `Email: ${form.get("email")}`,
+                `Main need: ${form.get("need")}`,
+                "",
+                "Context, objectives and timeline:",
+                String(form.get("message"))
+            ]
+            : [
+                `Nom : ${form.get("name")}`,
+                `Entreprise : ${form.get("company")}`,
+                `E-mail : ${form.get("email")}`,
+                `Besoin principal : ${form.get("need")}`,
+                "",
+                "Contexte, objectifs et échéance :",
+                String(form.get("message"))
+            ];
+        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    });
 
-            const parent = img.parentElement;
-            if (!parent) return;
-            parent.classList.add("asset-guard");
-
-            const hasOverlay = parent.querySelector(".asset-guard-overlay");
-            if (hasOverlay) return;
-
-            const overlay = document.createElement("span");
-            overlay.className = "asset-guard-overlay";
-            overlay.setAttribute("aria-hidden", "true");
-            overlay.addEventListener("contextmenu", blockEvent);
-            overlay.addEventListener("dragstart", blockEvent);
-            parent.appendChild(overlay);
-        });
-    };
-
-    installAssetGuards();
-    window.addEventListener("resize", scheduleHeroBubbleAnchor);
-    window.addEventListener("resize", scheduleScrollProgress);
-    window.addEventListener("scroll", scheduleScrollProgress, { passive: true });
-
-    applyTranslations(currentLang);
-    syncScrollProgress();
+    const stopAssetAction = event => event.preventDefault();
+    document.querySelectorAll('img[src^="assets/"]').forEach(img => {
+        img.draggable = false;
+        img.addEventListener("contextmenu", stopAssetAction);
+        img.addEventListener("dragstart", stopAssetAction);
+    });
 });
